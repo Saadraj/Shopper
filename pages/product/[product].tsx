@@ -1,0 +1,64 @@
+import { Box, Divider, Grid } from "@material-ui/core";
+import { Pagination } from "@material-ui/lab";
+import axios from "axios";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
+import { menu } from "../../component/Navbar/navItem";
+import Category from "../../component/utils/Category";
+import { productInterface } from "../../component/utils/Interfaces";
+import Loading from "../../component/utils/loading";
+import SideBar from "../../component/utils/SideNav";
+
+const Product = () => {
+    const router = useRouter();
+    const { product } = router.query;
+    const [state, setState] = useState<productInterface | undefined>();
+    const [page, setPage] = useState(1);
+
+    useEffect(() => {
+        setPage(1);
+    }, [product]);
+    useEffect(() => {
+        setState(undefined);
+        const has = menu.some((p) => p?.list?.length && p.apiName === product);
+        const fetchData = async () => {
+            const { data } = await axios.get(`/api/${product}?page=${page}`);
+            setState(data);
+        };
+        has ? fetchData() : router.push("/404");
+    }, [page, product, router]);
+
+    const onChange = (event: any, p: number) => {
+        console.log(event);
+        setPage(p);
+    };
+
+    return (
+        <Grid container justify="space-around" spacing={4} style={{ backgroundColor: "#f7f7f7" }}>
+            <Grid item xs={2}>
+                <SideBar />
+            </Grid>
+            <Divider orientation="vertical" flexItem />
+            <Grid item container xs={9}>
+                <Grid item xs={12} justify="center" spacing={4}>
+                    {state?.currentItems?.length ? (
+                        <Category name={product} state={state.currentItems} />
+                    ) : (
+                        <Loading />
+                    )}
+                </Grid>
+                <Grid item container xs={12} justify="center">
+                    <Box p={5}>
+                        <Pagination
+                            count={state?.totalPage}
+                            onChange={onChange}
+                            showFirstButton
+                            showLastButton
+                        />
+                    </Box>
+                </Grid>
+            </Grid>
+        </Grid>
+    );
+};
+export default Product;
