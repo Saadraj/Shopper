@@ -39,29 +39,19 @@ const Partner = ({ partners }) => {
                     <Typography variant="h3" paragraph>
                         Our Partners
                     </Typography>
-                    <Container
-                        maxWidth="sm"
-                        className={classes.subHeadingPadding}
-                    >
+                    <Container maxWidth="sm" className={classes.subHeadingPadding}>
                         <Typography paragraph component="p">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing
-                            elit. Soluta optio repellat quo veritatis
-                            perferendis eius aut ducimus porro nihil dolores
-                            quia, placeat obcaecati. Reprehenderit pariatur
-                            deleniti atque, nisi quae rerum similique itaque
-                            qui.
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta optio
+                            repellat quo veritatis perferendis eius aut ducimus porro nihil dolores
+                            quia, placeat obcaecati. Reprehenderit pariatur deleniti atque, nisi
+                            quae rerum similique itaque qui.
                         </Typography>
                     </Container>
                     <Container maxWidth="lg">
                         <Grid container spacing={1} justify="space-around">
                             {partners?.map((src: string) => (
                                 <Grid item key={src}>
-                                    <Image
-                                        src={src}
-                                        alt="partners"
-                                        height="30%"
-                                        width="70%"
-                                    />
+                                    <Image src={src} alt="partners" height="30%" width="70%" />
                                 </Grid>
                             ))}
                         </Grid>

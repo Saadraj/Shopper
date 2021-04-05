@@ -1,7 +1,6 @@
 import {
     Box,
     ButtonBase,
-    Card,
     Container,
     createStyles,
     Grid,
@@ -9,6 +8,8 @@ import {
     IconButton,
     makeStyles,
     Paper,
+    Slide,
+    Snackbar,
     Theme,
     Tooltip,
     Typography
@@ -16,8 +17,13 @@ import {
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import VisibilityIcon from "@material-ui/icons/Visibility";
+import Alert from "@material-ui/lab/Alert";
 import Image from "next/image";
-import React, { useState } from "react";
+import { useRouter } from "next/router";
+import React, { useContext, useState } from "react";
+import { StoreContext } from "../../pages/_app";
+import { CART_INCREMENT, VIEW_DETAILS } from "../../redux/actionTypes/index";
+import { itemInterface } from "../utils/Interfaces";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -28,11 +34,14 @@ const useStyles = makeStyles((theme: Theme) =>
         paper: {
             paddingTop: theme.spacing(5),
             paddingBottom: theme.spacing(11),
-            textAlign: "center"
+            textAlign: "center",
+            position: "relative",
+            overflow: "hidden"
         },
         subHeadingPadding: {
             paddingBottom: theme.spacing(5)
         },
+        overlay: {},
         imageButton: {
             position: "absolute",
             left: 0,
@@ -42,7 +51,6 @@ const useStyles = makeStyles((theme: Theme) =>
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            color: theme.palette.common.white,
             transition: ".6s",
             "&:hover": {
                 backgroundColor: "rgba(0,0,0,0.7)"
@@ -62,7 +70,18 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function Latest({ latest }) {
     const [state, setState] = useState({ target: "", open: false });
+    const [openSnackbar, setOpenSnackbar] = useState(false);
     const classes = useStyles(state.open);
+    const route = useRouter();
+    const { dispatch } = useContext(StoreContext);
+    const goToDetailsPage = (item: itemInterface) => {
+        dispatch({ type: VIEW_DETAILS, payload: item });
+        const url = Math.round(Math.random() * 10000);
+        route.push(`/product/details/${url}`);
+    };
+    const addToCart = (item: itemInterface) => {
+        dispatch({ type: CART_INCREMENT, payload: item });
+    };
     const onMouseOverEvent = (v: string) => {
         setState({ target: v, open: true });
     };
@@ -87,12 +106,13 @@ export default function Latest({ latest }) {
                     </Container>
                     <Container maxWidth="md">
                         <Grid container spacing={4} justify="space-around">
-                            {latest?.map((item: { src: string; product: string }) => (
+                            {latest?.map((item: itemInterface) => (
                                 <Grid item key={item.src}>
-                                    <Card
+                                    <Paper
                                         variant="outlined"
                                         onMouseOver={() => onMouseOverEvent(item.product)}
                                         onMouseLeave={() => onMouseLeaveEvent()}
+                                        className={classes.overlay}
                                     >
                                         <ButtonBase focusRipple key={item.product}>
                                             <Image
@@ -105,9 +125,14 @@ export default function Latest({ latest }) {
                                                 <Grow in={item.product === target && open}>
                                                     <Grid container justify="space-evenly">
                                                         <Grid item>
-                                                            <Tooltip title="Buy Now">
-                                                                <IconButton className={classes.red}>
-                                                                    <AddCircleOutlineIcon />
+                                                            <Tooltip title="Order Now">
+                                                                <IconButton
+                                                                    className={classes.red}
+                                                                    onClick={() => {
+                                                                        setOpenSnackbar(true);
+                                                                    }}
+                                                                >
+                                                                    <ShoppingCartIcon />
                                                                 </IconButton>
                                                             </Tooltip>
                                                         </Grid>
@@ -115,6 +140,9 @@ export default function Latest({ latest }) {
                                                             <Tooltip title="View Details">
                                                                 <IconButton
                                                                     className={classes.yellow}
+                                                                    onClick={() => {
+                                                                        goToDetailsPage(item);
+                                                                    }}
                                                                 >
                                                                     <VisibilityIcon />
                                                                 </IconButton>
@@ -124,8 +152,11 @@ export default function Latest({ latest }) {
                                                             <Tooltip title="Add to Cart">
                                                                 <IconButton
                                                                     className={classes.green}
+                                                                    onClick={() => {
+                                                                        addToCart(item);
+                                                                    }}
                                                                 >
-                                                                    <ShoppingCartIcon />
+                                                                    <AddCircleOutlineIcon />
                                                                 </IconButton>
                                                             </Tooltip>
                                                         </Grid>
@@ -133,13 +164,24 @@ export default function Latest({ latest }) {
                                                 </Grow>
                                             </span>
                                         </ButtonBase>
-                                    </Card>
+                                    </Paper>
                                 </Grid>
                             ))}
                         </Grid>
                     </Container>
                 </Paper>
             </Container>
+            <Snackbar
+                anchorOrigin={{ vertical: "top", horizontal: "right" }}
+                open={openSnackbar}
+                onClose={() => setOpenSnackbar(false)}
+                autoHideDuration={2500}
+                TransitionComponent={Slide}
+            >
+                <Alert severity="error" variant="filled">
+                    Sorry! This Option Currently Unavailable.
+                </Alert>
+            </Snackbar>
         </Box>
     );
 }

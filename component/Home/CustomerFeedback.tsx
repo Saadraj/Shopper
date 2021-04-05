@@ -1,7 +1,6 @@
 import {
     Avatar,
     Box,
-    Card,
     Container,
     createStyles,
     Grid,
@@ -51,17 +50,12 @@ export default function CustomerFeedback({ feedbacks }) {
                     <Typography variant="h3" paragraph>
                         Customer&apos;s Feedback
                     </Typography>
-                    <Container
-                        maxWidth="sm"
-                        className={classes.subHeadingPadding}
-                    >
+                    <Container maxWidth="sm" className={classes.subHeadingPadding}>
                         <Typography paragraph component="p">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing
-                            elit. Soluta optio repellat quo veritatis
-                            perferendis eius aut ducimus porro nihil dolores
-                            quia, placeat obcaecati. Reprehenderit pariatur
-                            deleniti atque, nisi quae rerum similique itaque
-                            qui.
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta optio
+                            repellat quo veritatis perferendis eius aut ducimus porro nihil dolores
+                            quia, placeat obcaecati. Reprehenderit pariatur deleniti atque, nisi
+                            quae rerum similique itaque qui.
                         </Typography>
                     </Container>
                     <Container maxWidth="lg">
@@ -78,7 +72,7 @@ export default function CustomerFeedback({ feedbacks }) {
                                     rating: number;
                                     comment: string;
                                 }) => (
-                                    <Card
+                                    <Paper
                                         key={feedback.src}
                                         variant="outlined"
                                         className={classes.card}
@@ -99,16 +93,13 @@ export default function CustomerFeedback({ feedbacks }) {
                                                 >
                                                     {feedback.name}
                                                 </Typography>
-                                                <Rating
-                                                    value={feedback.rating}
-                                                    readOnly
-                                                />
+                                                <Rating value={feedback.rating} readOnly />
                                                 <Typography paragraph>
                                                     {feedback.comment}
                                                 </Typography>
                                             </Grid>
                                         </Grid>
-                                    </Card>
+                                    </Paper>
                                 )
                             )}
                         </Carousel>

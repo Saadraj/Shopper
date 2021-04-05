@@ -37,14 +37,6 @@ export default [
     },
     {
         title: "Partners",
-        subtitle: [
-            "Adidas",
-            "Nike",
-            "Puma",
-            "Veniam",
-            "Ullamco",
-            "Laboris",
-            "Exercitation"
-        ]
+        subtitle: ["Adidas", "Nike", "Puma", "Veniam", "Ullamco", "Laboris", "Exercitation"]
     }
 ];

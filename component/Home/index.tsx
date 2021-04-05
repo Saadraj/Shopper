@@ -7,7 +7,7 @@ import Feature from "./Feature";
 import Latest from "./Latest";
 import Partner from "./Partners";
 
-function Home({ data }) {
+export default function Home({ data }) {
     return (
         <Box>
             <DisplayProduct items={data?.items} />
@@ -20,5 +20,3 @@ function Home({ data }) {
         </Box>
     );
 }
-
-export default Home;

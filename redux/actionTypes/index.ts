@@ -1,0 +1,3 @@
+export const CART_INCREMENT = "CART_INCREMENT";
+export const CART_DECREMENT = "CART_DECREMENT";
+export const VIEW_DETAILS = "VIEW_DETAILS";

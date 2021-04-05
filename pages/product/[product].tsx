@@ -1,4 +1,4 @@
-import { Box, Divider, Grid } from "@material-ui/core";
+import { Box, Divider, Grid, Paper } from "@material-ui/core";
 import { Pagination } from "@material-ui/lab";
 import axios from "axios";
 import { useRouter } from "next/router";
@@ -34,13 +34,13 @@ const Product = () => {
     };
 
     return (
-        <Grid container justify="space-around" spacing={4} style={{ backgroundColor: "#f7f7f7" }}>
+        <Grid container justify="space-around" component={Paper}>
             <Grid item xs={2}>
                 <SideBar />
             </Grid>
             <Divider orientation="vertical" flexItem />
             <Grid item container xs={9}>
-                <Grid item xs={12} justify="center" spacing={4}>
+                <Grid item container xs={12} justify="center" spacing={4}>
                     {state?.currentItems?.length ? (
                         <Category name={product} state={state.currentItems} />
                     ) : (
@@ -49,12 +49,15 @@ const Product = () => {
                 </Grid>
                 <Grid item container xs={12} justify="center">
                     <Box p={5}>
-                        <Pagination
-                            count={state?.totalPage}
-                            onChange={onChange}
-                            showFirstButton
-                            showLastButton
-                        />
+                        {state?.currentItems?.length && (
+                            <Pagination
+                                count={state?.totalPage}
+                                onChange={onChange}
+                                showFirstButton
+                                showLastButton
+                                page={page}
+                            />
+                        )}
                     </Box>
                 </Grid>
             </Grid>

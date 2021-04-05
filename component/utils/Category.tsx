@@ -10,6 +10,8 @@ import {
     Grid,
     IconButton,
     makeStyles,
+    Slide,
+    Snackbar,
     Theme,
     Tooltip,
     Typography
@@ -17,8 +19,11 @@ import {
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import VisibilityIcon from "@material-ui/icons/Visibility";
-import Link from "next/link";
-import React from "react";
+import Alert from "@material-ui/lab/Alert";
+import { useRouter } from "next/router";
+import React, { useContext, useState } from "react";
+import { StoreContext } from "../../pages/_app";
+import { CART_INCREMENT, VIEW_DETAILS } from "../../redux/actionTypes";
 import { itemInterface } from "./Interfaces";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -50,6 +55,17 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function Category({ state, name }) {
     const classes = useStyles();
+    const route = useRouter();
+    const [open, setOpen] = useState(false);
+    const { dispatch } = useContext(StoreContext);
+    const goToDetailsPage = (item: itemInterface) => {
+        dispatch({ type: VIEW_DETAILS, payload: item });
+        const url = Math.round(Math.random() * 10000);
+        route.push(`/product/details/${url}`);
+    };
+    const addToCart = (item: itemInterface) => {
+        dispatch({ type: CART_INCREMENT, payload: item });
+    };
 
     return (
         <Box className={classes.root}>
@@ -60,75 +76,99 @@ export default function Category({ state, name }) {
             <Grid container spacing={4} className={classes.root}>
                 {state?.map((item: itemInterface) => (
                     <Grid item xs={12} sm={6} md={3}>
-                        <Link href="/">
-                            <Card className={classes.card}>
-                                <CardActionArea>
-                                    <CardMedia
-                                        component="img"
-                                        alt="Contemplative Reptile"
-                                        height="250"
-                                        image={item.src}
-                                        title={item.product}
-                                    />
-                                    <CardContent>
-                                        <Typography gutterBottom variant="h6">
-                                            {item.product}
-                                        </Typography>
-                                        <Grid container justify="space-between">
+                        <Card className={classes.card} variant="outlined">
+                            <CardActionArea
+                                onClick={() => {
+                                    goToDetailsPage(item);
+                                }}
+                            >
+                                <CardMedia
+                                    component="img"
+                                    alt="Contemplative Reptile"
+                                    height="250"
+                                    image={item.src}
+                                    title={item.product}
+                                />
+                                <CardContent>
+                                    <Typography gutterBottom variant="h6">
+                                        {item.product}
+                                    </Typography>
+                                    <Grid container justify="space-between">
+                                        <Grid item>
+                                            <Typography gutterBottom className={classes.green}>
+                                                price ${item.price}
+                                            </Typography>
+                                        </Grid>
+                                        {item.discount && (
                                             <Grid item>
-                                                <Typography gutterBottom className={classes.green}>
-                                                    price ${item.price}
+                                                <Typography gutterBottom color="error">
+                                                    {item.discount}% off
                                                 </Typography>
                                             </Grid>
-                                            {item.discount && (
-                                                <Grid item>
-                                                    <Typography gutterBottom color="error">
-                                                        {item.discount}% off
-                                                    </Typography>
-                                                </Grid>
-                                            )}
-                                        </Grid>
-                                        <Typography
-                                            variant="body2"
-                                            color="textSecondary"
-                                            component="p"
-                                        >
-                                            Lizards are a widespread group of squamate reptiles,
-                                            with over 6,000 species, ranging across all continents
-                                            except Antarctica
-                                        </Typography>
-                                    </CardContent>
-                                </CardActionArea>
-                                <CardActions>
-                                    <Grid container justify="space-evenly">
-                                        <Grid item>
-                                            <Tooltip title="Buy Now">
-                                                <IconButton className={classes.red}>
-                                                    <AddCircleOutlineIcon />
-                                                </IconButton>
-                                            </Tooltip>
-                                        </Grid>
-                                        <Grid item>
-                                            <Tooltip title="View Details">
-                                                <IconButton className={classes.yellow}>
-                                                    <VisibilityIcon />
-                                                </IconButton>
-                                            </Tooltip>
-                                        </Grid>
-                                        <Grid item>
-                                            <Tooltip title="Add to Cart">
-                                                <IconButton className={classes.green}>
-                                                    <ShoppingCartIcon />
-                                                </IconButton>
-                                            </Tooltip>
-                                        </Grid>
+                                        )}
                                     </Grid>
-                                </CardActions>
-                            </Card>
-                        </Link>
+                                    <Typography variant="body2" color="textSecondary" component="p">
+                                        Lizards are a widespread group of squamate reptiles, with
+                                        over 6,000 species, ranging across all continents except
+                                        Antarctica
+                                    </Typography>
+                                </CardContent>
+                            </CardActionArea>
+                            <CardActions>
+                                <Grid container justify="space-evenly">
+                                    <Grid item>
+                                        <Tooltip title="Buy Now">
+                                            <IconButton
+                                                className={classes.red}
+                                                onClick={() => {
+                                                    setOpen(true);
+                                                }}
+                                            >
+                                                <ShoppingCartIcon />
+                                            </IconButton>
+                                        </Tooltip>
+                                    </Grid>
+                                    <Grid item>
+                                        <Tooltip title="View Details">
+                                            <IconButton
+                                                className={classes.yellow}
+                                                onClick={() => {
+                                                    goToDetailsPage(item);
+                                                }}
+                                            >
+                                                <VisibilityIcon />
+                                            </IconButton>
+                                        </Tooltip>
+                                    </Grid>
+                                    <Grid item>
+                                        <Tooltip title="Add to Cart">
+                                            <IconButton
+                                                className={classes.green}
+                                                onClick={() => {
+                                                    addToCart(item);
+                                                }}
+                                            >
+                                                <AddCircleOutlineIcon />
+                                            </IconButton>
+                                        </Tooltip>
+                                    </Grid>
+                                </Grid>
+                            </CardActions>
+                        </Card>
                     </Grid>
                 ))}
             </Grid>
+            <Snackbar
+                anchorOrigin={{ vertical: "top", horizontal: "right" }}
+                open={open}
+                onClose={() => setOpen(false)}
+                autoHideDuration={2500}
+                TransitionComponent={Slide}
+            >
+                <Alert severity="error" variant="filled">
+                    Sorry! This Option Currently Unavailable.
+                </Alert>
+            </Snackbar>
         </Box>
     );
 }

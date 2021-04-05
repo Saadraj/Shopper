@@ -1,12 +1,12 @@
 import {
     Box,
     Button,
-    Card,
     Container,
     createStyles,
     Divider,
     Grid,
     makeStyles,
+    Paper,
     TextField,
     Theme,
     Typography
@@ -41,12 +41,12 @@ function ContactUs() {
         <>
             <Box p={11}>
                 <Container maxWidth="lg">
-                    <Card className={classes.card}>
+                    <Paper className={classes.card}>
                         <Typography variant="h4" align="center" gutterBottom>
                             Visit Us
                         </Typography>
                         <Divider />
-                        <Grid container className={classes.root}>
+                        <Grid container justify="space-evenly" className={classes.root}>
                             <Grid item xs={3}>
                                 <Typography variant="h5" gutterBottom>
                                     Contact Details
@@ -81,7 +81,7 @@ function ContactUs() {
                                 <Typography>Friday</Typography>
                                 <Typography>05:00pm - 9:00pm</Typography>
                             </Grid>
-                            <Grid item xs={6}>
+                            <Grid item xs={5}>
                                 <Typography variant="h5" align="center">
                                     Email Us
                                 </Typography>
@@ -123,7 +123,7 @@ function ContactUs() {
                                 </form>
                             </Grid>
                         </Grid>
-                    </Card>
+                    </Paper>
                 </Container>
             </Box>
             <Box>

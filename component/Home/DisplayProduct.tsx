@@ -1,10 +1,4 @@
-import {
-    Box,
-    createStyles,
-    makeStyles,
-    Paper,
-    Typography
-} from "@material-ui/core";
+import { Box, createStyles, makeStyles, Paper, Typography } from "@material-ui/core";
 import React from "react";
 import Carousel from "react-material-ui-carousel";
 import { itemInterface } from "../utils/Interfaces";
@@ -45,12 +39,7 @@ export default function DisplayProduct({ items }) {
 
     return (
         <Box className={classes.background}>
-            <Carousel
-                animation="slide"
-                indicators={false}
-                timeout={1000}
-                navButtonsAlwaysInvisible
-            >
+            <Carousel animation="slide" indicators={false} timeout={1000} navButtonsAlwaysInvisible>
                 {items?.map((item: itemInterface) => (
                     <Paper key={item.product}>
                         <Paper className={classes.overlay}>

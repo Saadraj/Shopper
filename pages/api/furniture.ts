@@ -19,7 +19,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             discount: Math.round(Math.random() * 5) > 2 && Math.round(Math.random() * 20) + 20
         });
     });
-    await new Promise((resolve) => setTimeout(resolve, Math.round(Math.random() * 2000)));
     const currentPage = Number(req.query.page) || 1;
     const itemsPerPage = 12;
     const indexOfLastItem = currentPage * itemsPerPage;

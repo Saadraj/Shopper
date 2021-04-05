@@ -44,11 +44,7 @@ const Footer = () => {
                         <Grid item xs={12}>
                             <Link href="/">
                                 <a>
-                                    <Image
-                                        src="/img/logo.png"
-                                        height={35}
-                                        width="100%"
-                                    />
+                                    <Image src="/img/logo.png" height={35} width="100%" />
                                 </a>
                             </Link>
                         </Grid>
@@ -68,13 +64,7 @@ const Footer = () => {
                     </Grid>
                     <Grid item container justify="space-around" xs={9}>
                         {footer?.map((v) => (
-                            <Grid
-                                container
-                                item
-                                justify="space-around"
-                                xs={3}
-                                key={v.title}
-                            >
+                            <Grid container item justify="space-around" xs={3} key={v.title}>
                                 <Grid item xs={12} className={classes.title}>
                                     <Typography variant="h5" paragraph>
                                         {v.title}

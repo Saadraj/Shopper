@@ -88,6 +88,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     Partners.forEach((data) => {
         partners.push(`/img/Home/Partners/${data}`);
     });
-    await new Promise((resolve) => setTimeout(resolve, Math.round(Math.random() * 2000)));
     res.json({ latest, items, features, feedback, partners });
 };

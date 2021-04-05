@@ -1,6 +1,6 @@
 import {
     AppBar,
-    Box,
+    Badge,
     Button,
     Container,
     createStyles,
@@ -14,8 +14,7 @@ import {
 import SearchIcon from "@material-ui/icons/Search";
 import Link from "next/link";
 import React from "react";
-
-const subNav = ["My Account", "Carts", "CheckOut", "Login"];
+import { subNav } from "./navItem";
 
 const useStyles = makeStyles(() =>
     createStyles({
@@ -43,25 +42,46 @@ const useStyles = makeStyles(() =>
 );
 export default function SubNav() {
     const classes = useStyles();
+    const { data } = useSWR("/api/carts", axios);
+    const totalCart = data?.data?.totalCarts;
     return (
-        <Box className={classes.root}>
+        <Paper className={classes.root}>
             <AppBar position="static" color="default" component={Paper}>
                 <Toolbar>
                     <Container maxWidth="xl">
                         <Grid container justify="space-between" alignItems="center">
                             <Grid item container xs={4}>
                                 {subNav.map((item) => (
-                                    <Grid item key={item} className={classes.grid}>
-                                        <Link href={`/${item}`}>
-                                            <Button color="inherit" variant="text" disableRipple>
-                                                {item}
-                                            </Button>
+                                    <Grid item key={item.title} className={classes.grid}>
+                                        <Link href={`/${item.apiName}`}>
+                                            {item.title === "Carts" ? (
+                                                <Badge
+                                                    badgeContent={totalCart || null}
+                                                    color="primary"
+                                                >
+                                                    <Button
+                                                        color="inherit"
+                                                        variant="text"
+                                                        disableRipple
+                                                    >
+                                                        {item.title}
+                                                    </Button>
+                                                </Badge>
+                                            ) : (
+                                                <Button
+                                                    color="inherit"
+                                                    variant="text"
+                                                    disableRipple
+                                                >
+                                                    {item.title}
+                                                </Button>
+                                            )}
                                         </Link>
                                     </Grid>
                                 ))}
                             </Grid>
                             <Grid xs={6} />
-                            <Grid xs={2} justify="flex-end">
+                            <Grid xs={2} container justify="flex-end">
                                 <TextField id="standard-basic" label="Search for Products" />
                                 <IconButton type="submit" aria-label="search">
                                     <SearchIcon />
@@ -71,6 +91,6 @@ export default function SubNav() {
                     </Container>
                 </Toolbar>
             </AppBar>
-        </Box>
+        </Paper>
     );
 }

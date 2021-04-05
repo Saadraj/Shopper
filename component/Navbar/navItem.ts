@@ -26,6 +26,7 @@ const digital = [
     "Air Condition",
     "Accessories"
 ];
+
 export const menu = [
     {
         title: "men",
@@ -64,5 +65,24 @@ export const menu = [
     {
         title: "about Us",
         apiName: "about"
+    }
+];
+
+export const subNav = [
+    {
+        title: "My Account",
+        apiName: "myAccount",
+    },
+    {
+        title: "Carts",
+        apiName: "carts",
+    },
+    {
+        title: "check Out",
+        apiName: "checkOut"
+    },
+    {
+        title: "Login",
+        apiName: "login"
     }
 ];
