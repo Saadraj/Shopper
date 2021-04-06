@@ -12,7 +12,7 @@ import {
     Snackbar,
     Theme,
     Tooltip,
-    Typography
+    Typography,
 } from "@material-ui/core";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
@@ -29,17 +29,17 @@ const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         container: {
             paddingTop: theme.spacing(22),
-            paddingBottom: theme.spacing(11)
+            paddingBottom: theme.spacing(11),
         },
         paper: {
             paddingTop: theme.spacing(5),
             paddingBottom: theme.spacing(11),
             textAlign: "center",
             position: "relative",
-            overflow: "hidden"
+            overflow: "hidden",
         },
         subHeadingPadding: {
-            paddingBottom: theme.spacing(5)
+            paddingBottom: theme.spacing(5),
         },
         overlay: {},
         imageButton: {
@@ -53,18 +53,18 @@ const useStyles = makeStyles((theme: Theme) =>
             justifyContent: "center",
             transition: ".6s",
             "&:hover": {
-                backgroundColor: "rgba(0,0,0,0.7)"
-            }
+                backgroundColor: "rgba(0,0,0,0.7)",
+            },
         },
         green: {
-            color: theme.palette.success.main
+            color: theme.palette.success.main,
         },
         red: {
-            color: theme.palette.error.main
+            color: theme.palette.error.main,
         },
         yellow: {
-            color: theme.palette.warning.main
-        }
+            color: theme.palette.warning.main,
+        },
     })
 );
 
@@ -74,21 +74,27 @@ export default function Latest({ latest }) {
     const classes = useStyles(state.open);
     const route = useRouter();
     const { dispatch } = useContext(StoreContext);
+
     const goToDetailsPage = (item: itemInterface) => {
         dispatch({ type: VIEW_DETAILS, payload: item });
         const url = Math.round(Math.random() * 10000);
         route.push(`/product/details/${url}`);
     };
+    
     const addToCart = (item: itemInterface) => {
         dispatch({ type: CART_INCREMENT, payload: item });
     };
+    
     const onMouseOverEvent = (v: string) => {
         setState({ target: v, open: true });
     };
+    
     const onMouseLeaveEvent = () => {
         setState({ target: "", open: false });
     };
+    
     const { target, open } = state;
+    
     return (
         <Box>
             <Container maxWidth="lg" className={classes.container}>

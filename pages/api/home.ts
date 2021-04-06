@@ -32,7 +32,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         }
     ];
     const Carousel = fs.readdirSync(
-        path.join(serverRuntimeConfig.PROJECT_ROOT, "./public/img/Home/Carousel")
+        path.join(serverRuntimeConfig.PROJECT_ROOT, "/public/img/Home/Carousel")
     );
     Carousel.forEach((data) => {
         items.push({
@@ -46,7 +46,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     });
 
     const Latest = fs.readdirSync(
-        path.join(serverRuntimeConfig.PROJECT_ROOT, "./public/img/Home/Latest/")
+        path.join(serverRuntimeConfig.PROJECT_ROOT, "/public/img/Home/Latest")
     );
     Latest.forEach((data) => {
         latest.push({
@@ -59,7 +59,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     });
 
     const Feedback = fs.readdirSync(
-        path.join(serverRuntimeConfig.PROJECT_ROOT, "./public/img/Home/Feedback/")
+        path.join(serverRuntimeConfig.PROJECT_ROOT, "/public/img/Home/Feedback")
     );
     Feedback.forEach((data) => {
         feedback.push({
@@ -83,7 +83,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     });
 
     const Partners = fs.readdirSync(
-        path.join(serverRuntimeConfig.PROJECT_ROOT, "./public/img/Home/Partners/")
+        path.join(serverRuntimeConfig.PROJECT_ROOT, "/public/img/Home/Partners")
     );
     Partners.forEach((data) => {
         partners.push(`/img/Home/Partners/${data}`);

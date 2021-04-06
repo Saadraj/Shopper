@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme: Theme) =>
 export default function AboutUs() {
     const classes = useStyles();
     return (
-        <>
+        <Box>
             <Grid container alignItems="center" className={classes.bg}>
                 <Grid item xs={12}>
                     <Typography variant="h2" align="center">
@@ -68,6 +68,6 @@ export default function AboutUs() {
                     <OurTeam />
                 </Container>
             </Box>
-        </>
+        </Box>
     );
 }

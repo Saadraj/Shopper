@@ -12,17 +12,15 @@ import {
     Slide,
     Snackbar,
     Theme,
-    Typography
+    Typography,
 } from "@material-ui/core";
-import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
+import RemoveCircleOutlineIcon from "@material-ui/icons/RemoveCircleOutline";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import Alert from "@material-ui/lab/Alert";
-import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useContext, useState } from "react";
-import useSWR from "swr";
 import { itemInterface } from "../component/utils/Interfaces";
 import { CART_DECREMENT, VIEW_DETAILS } from "../redux/actionTypes";
 import { StoreContext } from "./_app";
@@ -33,23 +31,23 @@ const useStyles = makeStyles((theme: Theme) =>
             paddingTop: theme.spacing(11),
             paddingBottom: theme.spacing(11),
             width: "100%",
-            backgroundColor: 'rgba(25, 118, 210,0.4)',
+            backgroundColor: "rgba(25, 118, 210,0.4)",
         },
         green: {
             color: theme.palette.success.main,
-            width: 200
+            width: 200,
         },
         greenButton: {
-            width: 200
+            width: 200,
         },
         red: {
             color: theme.palette.error.main,
-            width: 200
+            width: 200,
         },
         yellow: {
             color: theme.palette.warning.main,
-            width: 200
-        }
+            width: 200,
+        },
     })
 );
 
@@ -57,23 +55,23 @@ export default function Carts() {
     const classes = useStyles();
     const route = useRouter();
     const [open, setOpen] = useState(false);
-    const { store,dispatch } = useContext(StoreContext);
+    const { store, dispatch } = useContext(StoreContext);
 
     const goToDetailsPage = (item: itemInterface) => {
         dispatch({ type: VIEW_DETAILS, payload: item });
         const url = Math.round(Math.random() * 10000);
         route.push(`/product/details/${url}`);
     };
-    
+
     const addToCart = (item: itemInterface) => {
         dispatch({ type: CART_DECREMENT, payload: item });
     };
-    
+
     const state = store.cart;
     return (
         <Box className={classes.root}>
-            <Container maxWidth="lg" >
-                <Typography variant="h2" align="center" gutterBottom >
+            <Container maxWidth="lg">
+                <Typography variant="h2" align="center" gutterBottom>
                     Carts
                 </Typography>
                 <Divider />
@@ -82,11 +80,7 @@ export default function Carts() {
                         <Grid item xs={12} key={item.src}>
                             <Card>
                                 <Grid container>
-                                    <Grid
-                                        item
-                                        container
-                                        xs={9}
-                                    >
+                                    <Grid item container xs={9}>
                                         <Grid item xs={3}>
                                             <Image
                                                 src={item.src}
@@ -135,22 +129,21 @@ export default function Carts() {
                                             </CardContent>
                                         </Grid>
                                     </Grid>
-                                    <Grid item
+                                    <Grid
+                                        item
                                         container
                                         direction="column"
                                         justify="center"
-                                        alignContent='center'
-                                        alignItems='center'
-                                        spacing={1} xs={3}>
+                                        alignContent="center"
+                                        alignItems="center"
+                                        spacing={1}
+                                        xs={3}
+                                    >
                                         <CardActions>
-                                            <Grid
-                                                container
-                                                direction="column"
-                                                spacing={1}
-                                            >
-                                                <Grid item >
+                                            <Grid container direction="column" spacing={1}>
+                                                <Grid item>
                                                     <Button
-                                                        variant='contained'
+                                                        variant="contained"
                                                         color="secondary"
                                                         className={classes.greenButton}
                                                         onClick={() => {
@@ -163,8 +156,8 @@ export default function Carts() {
                                                 </Grid>
                                                 <Grid item>
                                                     <Button
-                                                        variant='contained'
-                                                        color='primary'
+                                                        variant="contained"
+                                                        color="primary"
                                                         className={classes.yellow}
                                                         onClick={() => {
                                                             goToDetailsPage(item);
@@ -176,9 +169,9 @@ export default function Carts() {
                                                 </Grid>
                                                 <Grid item>
                                                     <Button
-                                                        variant='contained'
+                                                        variant="contained"
                                                         className={classes.greenButton}
-                                                        color='secondary'
+                                                        color="secondary"
                                                         onClick={() => {
                                                             addToCart(item);
                                                         }}

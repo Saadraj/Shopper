@@ -7,7 +7,7 @@ import {
     makeStyles,
     Paper,
     Theme,
-    Typography
+    Typography,
 } from "@material-ui/core";
 import Rating from "@material-ui/lab/Rating";
 import React from "react";
@@ -17,28 +17,28 @@ const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         container: {
             paddingTop: theme.spacing(11),
-            paddingBottom: theme.spacing(11)
+            paddingBottom: theme.spacing(11),
         },
         paper: {
             paddingTop: theme.spacing(5),
             paddingBottom: theme.spacing(11),
             overflow: "hidden",
-            textAlign: "center"
+            textAlign: "center",
         },
         subHeadingPadding: {
-            paddingBottom: theme.spacing(5)
+            paddingBottom: theme.spacing(5),
         },
         card: {
             padding: theme.spacing(5),
-            textAlign: "left"
+            textAlign: "left",
         },
         large: {
             width: theme.spacing(22),
-            height: theme.spacing(22)
+            height: theme.spacing(22),
         },
         title: {
-            textTransform: "capitalize"
-        }
+            textTransform: "capitalize",
+        },
     })
 );
 export default function CustomerFeedback({ feedbacks }) {

@@ -1,7 +1,5 @@
 import AboutUs from "../component/About/index";
 
-const about = () => {
-    return <AboutUs />;
-};
+const about = () => <AboutUs />;
 
 export default about;

@@ -18,6 +18,7 @@ const Product = () => {
     useEffect(() => {
         setPage(1);
     }, [product]);
+    
     useEffect(() => {
         setState(undefined);
         const has = menu.some((p) => p?.list?.length && p.apiName === product);
@@ -64,4 +65,6 @@ const Product = () => {
         </Grid>
     );
 };
+
+
 export default Product;
