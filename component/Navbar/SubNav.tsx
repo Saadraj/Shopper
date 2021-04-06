@@ -13,7 +13,8 @@ import {
 } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import Link from "next/link";
-import React from "react";
+import React, { useContext } from "react";
+import { StoreContext } from "../../pages/_app";
 import { subNav } from "./navItem";
 
 const useStyles = makeStyles(() =>
@@ -42,8 +43,8 @@ const useStyles = makeStyles(() =>
 );
 export default function SubNav() {
     const classes = useStyles();
-    const { data } = useSWR("/api/carts", axios);
-    const totalCart = data?.data?.totalCarts;
+    const { store } = useContext(StoreContext);
+    const totalCart = store?.cart?.length;
     return (
         <Paper className={classes.root}>
             <AppBar position="static" color="default" component={Paper}>
@@ -80,8 +81,8 @@ export default function SubNav() {
                                     </Grid>
                                 ))}
                             </Grid>
-                            <Grid xs={6} />
-                            <Grid xs={2} container justify="flex-end">
+                            <Grid item xs={6} />
+                            <Grid item xs={2} container justify="flex-end">
                                 <TextField id="standard-basic" label="Search for Products" />
                                 <IconButton type="submit" aria-label="search">
                                     <SearchIcon />

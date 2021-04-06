@@ -83,7 +83,7 @@ const OurTeam = () => {
                 className={classes.skillsRoot}
             >
                 {teams.map((v) => (
-                    <Grid item xs={4}>
+                    <Grid item xs={4} key={v.name}>
                         <Card variant="outlined">
                             <CardMedia
                                 component="img"

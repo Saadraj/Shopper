@@ -12,7 +12,7 @@ import {
     Popover,
     Theme,
     Toolbar,
-    Typography
+    Typography,
 } from "@material-ui/core";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import Image from "next/image";
@@ -23,11 +23,11 @@ import { menu } from "./navItem";
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
-            zIndex: 1111
+            zIndex: 1111,
         },
         tab: {
-            color: theme.palette.grey[50]
-        }
+            color: theme.palette.grey[50],
+        },
     })
 );
 export default function Navbar() {
@@ -58,23 +58,22 @@ export default function Navbar() {
                             </Grid>
                             <Grid item container justify="flex-end" xs={8}>
                                 {menu.map((item) => (
-                                    <>
+                                    <Button
+                                        key={item.apiName}
+                                        className={classes.tab}
+                                        onClick={(e) => handleOpen(e, item)}
+                                        endIcon={
+                                            item?.list?.length > 0 ? <ArrowDropDownIcon /> : null
+                                        }
+                                    >
                                         {item?.list?.length > 0 ? (
-                                            <Button
-                                                className={classes.tab}
-                                                onClick={(e) => handleOpen(e, item)}
-                                                endIcon={<ArrowDropDownIcon />}
-                                            >
-                                                <Typography>{item.title}</Typography>
-                                            </Button>
+                                            <Typography>{item.title}</Typography>
                                         ) : (
-                                            <Button className={classes.tab}>
-                                                <Link href={`/${item.apiName}`}>
-                                                    <Typography>{item.title}</Typography>
-                                                </Link>
-                                            </Button>
+                                            <Link href={`/${item.apiName}`}>
+                                                <Typography>{item.title}</Typography>
+                                            </Link>
                                         )}
-                                    </>
+                                    </Button>
                                 ))}
                                 {list && (
                                     <MenuLists
@@ -102,11 +101,11 @@ export const MenuLists = ({ open, menuList, handleClose, anchorEl }) => (
         style={{ marginTop: "10px", boxShadow: "none" }}
         anchorOrigin={{
             vertical: "bottom",
-            horizontal: "center"
+            horizontal: "center",
         }}
         transformOrigin={{
             vertical: "top",
-            horizontal: "center"
+            horizontal: "center",
         }}
     >
         {menuList.list?.map((li: string) => (

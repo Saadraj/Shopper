@@ -24,13 +24,14 @@ import { useRouter } from "next/router";
 import React, { useContext, useState } from "react";
 import useSWR from "swr";
 import { itemInterface } from "../component/utils/Interfaces";
-import { CART_INCREMENT, VIEW_DETAILS } from "../redux/actionTypes";
+import { CART_DECREMENT, VIEW_DETAILS } from "../redux/actionTypes";
 import { StoreContext } from "./_app";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
             paddingTop: theme.spacing(11),
+            paddingBottom: theme.spacing(11),
             width: "100%",
             backgroundColor: 'rgba(25, 118, 210,0.4)',
         },
@@ -52,21 +53,23 @@ const useStyles = makeStyles((theme: Theme) =>
     })
 );
 
-export default function Category() {
+export default function Carts() {
     const classes = useStyles();
     const route = useRouter();
     const [open, setOpen] = useState(false);
-    const { dispatch } = useContext(StoreContext);
+    const { store,dispatch } = useContext(StoreContext);
+
     const goToDetailsPage = (item: itemInterface) => {
         dispatch({ type: VIEW_DETAILS, payload: item });
         const url = Math.round(Math.random() * 10000);
         route.push(`/product/details/${url}`);
     };
+    
     const addToCart = (item: itemInterface) => {
-        dispatch({ type: CART_INCREMENT, payload: item });
+        dispatch({ type: CART_DECREMENT, payload: item });
     };
-    const { data } = useSWR("/api/men", axios);
-    const state = data?.data?.items;
+    
+    const state = store.cart;
     return (
         <Box className={classes.root}>
             <Container maxWidth="lg" >
@@ -76,7 +79,7 @@ export default function Category() {
                 <Divider />
                 <Grid container spacing={2}>
                     {state?.map((item: itemInterface) => (
-                        <Grid item xs={12}>
+                        <Grid item xs={12} key={item.src}>
                             <Card>
                                 <Grid container>
                                     <Grid

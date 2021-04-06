@@ -1,3 +1,7 @@
 import AboutUs from "../component/About/index";
 
-export default () => <AboutUs />;
+const about = () => {
+    return <AboutUs />;
+};
+
+export default about;
