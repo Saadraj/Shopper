@@ -1,15 +1,13 @@
 import Box from "@material-ui/core/Box";
 import Divider from "@material-ui/core/Divider";
-import axios from "axios";
 import { GetStaticProps } from "next";
-import getConfig from "next/config";
 import React from "react";
 import CustomerFeedback from "../component/Home/CustomerFeedback";
 import DisplayProduct from "../component/Home/DisplayProduct";
 import Feature from "../component/Home/Feature";
 import Latest from "../component/Home/Latest";
 import Partner from "../component/Home/Partners";
-
+import getData from "../component/utils/HomeApi/home";
 const index = ({ data }) => (
     <Box>
         <DisplayProduct items={data?.items} />
@@ -23,8 +21,7 @@ const index = ({ data }) => (
 );
 
 export const getStaticProps: GetStaticProps = async () => {
-    const { serverRuntimeConfig } = getConfig();
-    const { data } = await axios.get(`${serverRuntimeConfig.baseUrl}/api/home`);
+    const data = await getData();
     return {
         props: {
             data,

@@ -1,6 +1,7 @@
 import { Box, Divider, Grid, Paper } from "@material-ui/core";
 import { Pagination } from "@material-ui/lab";
 import axios from "axios";
+import { GetStaticPaths } from "next";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { menu } from "../../component/Navbar/navItem";
@@ -20,7 +21,7 @@ const Product = () => {
     }, [product]);
     
     useEffect(() => {
-        setState(undefined);
+        // setState(undefined);
         const has = menu.some((p) => p?.list?.length && p.apiName === product);
         const fetchData = async () => {
             const { data } = await axios.get(`/api/${product}?page=${page}`);
@@ -30,7 +31,6 @@ const Product = () => {
     }, [page, product, router]);
 
     const onChange = (event: any, p: number) => {
-        console.log(event);
         setPage(p);
     };
 
@@ -65,6 +65,5 @@ const Product = () => {
         </Grid>
     );
 };
-
 
 export default Product;

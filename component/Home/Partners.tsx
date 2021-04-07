@@ -16,17 +16,16 @@ const useStyles = makeStyles((theme: Theme) =>
             paddingBottom: theme.spacing(11)
         },
         paper: {
-            overflow: "hidden",
-            textAlign: "center",
             color: "white"
         },
         subHeadingPadding: {
             paddingBottom: theme.spacing(5)
         },
         bg: {
-            minHeight: "300px",
             background: `linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.7)),url('/img/Home/partner-bg.png')`,
-            backgroundSize: "cover"
+            backgroundRepeat: "no-repeat",
+            backgroundAttachment: "fixed",
+            backgroundSize: "100% 100%",
         }
     })
 );
@@ -36,7 +35,7 @@ const Partner = ({ partners }) => {
         <Box className={classes.bg}>
             <Container maxWidth="lg" className={classes.container}>
                 <Box className={classes.paper}>
-                    <Typography variant="h3" paragraph>
+                    <Typography variant="h3" align='center' paragraph>
                         Our Partners
                     </Typography>
                     <Container maxWidth="sm" className={classes.subHeadingPadding}>

@@ -58,7 +58,7 @@ const SideBar = () => {
                             Filter Your Product
                         </Typography>
                     </Grid>
-                    <Grid container xs={12}>
+                    <Grid item container xs={12}>
                         <Grid item xs={11}>
                             <TextField label="Filter Your Products" />
                         </Grid>

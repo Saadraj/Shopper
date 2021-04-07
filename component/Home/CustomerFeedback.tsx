@@ -21,16 +21,14 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         paper: {
             paddingTop: theme.spacing(5),
-            paddingBottom: theme.spacing(11),
-            overflow: "hidden",
-            textAlign: "center",
+            paddingBottom: theme.spacing(5),
         },
         subHeadingPadding: {
             paddingBottom: theme.spacing(5),
         },
         card: {
             padding: theme.spacing(5),
-            textAlign: "left",
+            // textAlign: "left",
         },
         large: {
             width: theme.spacing(22),
@@ -47,11 +45,11 @@ export default function CustomerFeedback({ feedbacks }) {
         <Box>
             <Container maxWidth="lg" className={classes.container}>
                 <Paper className={classes.paper} elevation={0}>
-                    <Typography variant="h3" paragraph>
+                    <Typography variant="h3" align='center' paragraph gutterBottom>
                         Customer&apos;s Feedback
                     </Typography>
                     <Container maxWidth="sm" className={classes.subHeadingPadding}>
-                        <Typography paragraph component="p">
+                        <Typography paragraph component="p" align='center'>
                             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta optio
                             repellat quo veritatis perferendis eius aut ducimus porro nihil dolores
                             quia, placeat obcaecati. Reprehenderit pariatur deleniti atque, nisi

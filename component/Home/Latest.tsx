@@ -12,7 +12,7 @@ import {
     Snackbar,
     Theme,
     Tooltip,
-    Typography,
+    Typography
 } from "@material-ui/core";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
@@ -28,29 +28,22 @@ import { itemInterface } from "../utils/Interfaces";
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         container: {
-            paddingTop: theme.spacing(22),
+            paddingTop: theme.spacing(11),
             paddingBottom: theme.spacing(11),
         },
         paper: {
             paddingTop: theme.spacing(5),
-            paddingBottom: theme.spacing(11),
-            textAlign: "center",
-            position: "relative",
-            overflow: "hidden",
+            paddingBottom: theme.spacing(5),
         },
         subHeadingPadding: {
             paddingBottom: theme.spacing(5),
         },
-        overlay: {},
         imageButton: {
             position: "absolute",
-            left: 0,
-            right: 0,
-            top: 0,
-            bottom: 0,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+            display: "grid",
+            placeItems: "center",
+            height: "100%",
+            width: "100%",
             transition: ".6s",
             "&:hover": {
                 backgroundColor: "rgba(0,0,0,0.7)",
@@ -80,26 +73,26 @@ export default function Latest({ latest }) {
         const url = Math.round(Math.random() * 10000);
         route.push(`/product/details/${url}`);
     };
-    
+
     const addToCart = (item: itemInterface) => {
         dispatch({ type: CART_INCREMENT, payload: item });
     };
-    
+
     const onMouseOverEvent = (v: string) => {
         setState({ target: v, open: true });
     };
-    
+
     const onMouseLeaveEvent = () => {
         setState({ target: "", open: false });
     };
-    
+
     const { target, open } = state;
-    
+
     return (
         <Box>
             <Container maxWidth="lg" className={classes.container}>
                 <Paper className={classes.paper} elevation={0}>
-                    <Typography variant="h3" paragraph>
+                    <Typography variant="h3" align="center" gutterBottom>
                         Latest Products
                     </Typography>
                     <Container maxWidth="sm" className={classes.subHeadingPadding}>
@@ -118,7 +111,6 @@ export default function Latest({ latest }) {
                                         variant="outlined"
                                         onMouseOver={() => onMouseOverEvent(item.product)}
                                         onMouseLeave={() => onMouseLeaveEvent()}
-                                        className={classes.overlay}
                                     >
                                         <ButtonBase focusRipple key={item.product}>
                                             <Image

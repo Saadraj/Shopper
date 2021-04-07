@@ -28,6 +28,9 @@ const useStyles = makeStyles((theme: Theme) =>
         tab: {
             color: theme.palette.grey[50],
         },
+        outline:{
+            outline:0
+        }
     })
 );
 export default function Navbar() {
@@ -92,7 +95,9 @@ export default function Navbar() {
     );
 }
 
-export const MenuLists = ({ open, menuList, handleClose, anchorEl }) => (
+export const MenuLists = ({ open, menuList, handleClose, anchorEl }) => {
+    const classes =useStyles()
+    return(
     <Popover
         id="menu"
         anchorEl={anchorEl}
@@ -111,9 +116,9 @@ export const MenuLists = ({ open, menuList, handleClose, anchorEl }) => (
         {menuList.list?.map((li: string) => (
             <MenuItem key={li} onClick={handleClose}>
                 <Link href={`/product/${menuList.apiName}`}>
-                    <MenuList>{li}</MenuList>
+                    <MenuList className={classes.outline}>{li}</MenuList>
                 </Link>
             </MenuItem>
         ))}
     </Popover>
-);
+)};
