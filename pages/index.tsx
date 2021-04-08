@@ -7,7 +7,7 @@ import DisplayProduct from "../component/Home/DisplayProduct";
 import Feature from "../component/Home/Feature";
 import Latest from "../component/Home/Latest";
 import Partner from "../component/Home/Partners";
-import getData from "../component/utils/HomeApi/home";
+import homeItems from '../component/Api/home.json'
 const index = ({ data }) => (
     <Box>
         <DisplayProduct items={data?.items} />
@@ -21,7 +21,7 @@ const index = ({ data }) => (
 );
 
 export const getStaticProps: GetStaticProps = async () => {
-    const data = await getData();
+    const data = homeItems
     return {
         props: {
             data,
