@@ -4,7 +4,7 @@ import {
     CardActionArea,
     CardActions,
     CardContent,
-    CardMedia,
+    CircularProgress,
     createStyles,
     Divider,
     Grid,
@@ -14,12 +14,13 @@ import {
     Snackbar,
     Theme,
     Tooltip,
-    Typography
+    Typography,
 } from "@material-ui/core";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import Alert from "@material-ui/lab/Alert";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useContext, useState } from "react";
 import { StoreContext } from "../../pages/_app";
@@ -30,26 +31,26 @@ const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
             paddingTop: theme.spacing(11),
-            width: "100%"
+            width: "100%",
         },
         capital: {
-            textTransform: "capitalize"
+            textTransform: "capitalize",
         },
         card: {
-            height: "100%"
+            height: "100%",
         },
         button: {
-            fontSize: 6
+            fontSize: 6,
         },
         green: {
-            color: theme.palette.success.main
+            color: theme.palette.success.main,
         },
         red: {
-            color: theme.palette.error.main
+            color: theme.palette.error.main,
         },
         yellow: {
-            color: theme.palette.warning.main
-        }
+            color: theme.palette.warning.main,
+        },
     })
 );
 
@@ -66,7 +67,10 @@ export default function Category({ state, name }) {
     const addToCart = (item: itemInterface) => {
         dispatch({ type: CART_INCREMENT, payload: item });
     };
+    const myLoader = ({ src, width, quality }) => {
+        return src
 
+      }
     return (
         <Box className={classes.root}>
             <Typography variant="h2" align="center" gutterBottom className={classes.capital}>
@@ -82,12 +86,14 @@ export default function Category({ state, name }) {
                                     goToDetailsPage(item);
                                 }}
                             >
-                                <CardMedia
-                                    component="img"
-                                    alt="Contemplative Reptile"
-                                    height="250"
-                                    image={item.src}
+                                <Image
+                                    // component="img"
+                                    // alt="Contemplative Reptile"
+                                    height="250%"
+                                    width="250%"
+                                    src={item.src}
                                     title={item.product}
+                                    loader={myLoader}
                                 />
                                 <CardContent>
                                     <Typography gutterBottom variant="h6">
