@@ -6,7 +6,8 @@ import path from "path";
 const { serverRuntimeConfig } = getConfig();
 export default async (req: NextApiRequest, res: NextApiResponse) => {
     const items = [];
-    const Carousel = fs.readdirSync(path.join(serverRuntimeConfig.PROJECT_ROOT, "/public/img/Men"));
+    const Carousel = fs.readdirSync(path.join(serverRuntimeConfig.PROJECT_ROOT, "./public/img/Men"));
+    console.log('object',serverRuntimeConfig.PROJECT_ROOT)
     Carousel.forEach((data) => {
         items.push({
             src: `/img/Men/${data}`,
