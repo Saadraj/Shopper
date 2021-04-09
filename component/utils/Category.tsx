@@ -4,6 +4,7 @@ import {
     CardActionArea,
     CardActions,
     CardContent,
+    CardMedia,
     CircularProgress,
     createStyles,
     Divider,
@@ -30,8 +31,7 @@ import { itemInterface } from "./Interfaces";
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
-            paddingTop: theme.spacing(11),
-            width: "100%",
+            paddingTop: theme.spacing(5),
         },
         capital: {
             textTransform: "capitalize",
@@ -67,17 +67,13 @@ export default function Category({ state, name }) {
     const addToCart = (item: itemInterface) => {
         dispatch({ type: CART_INCREMENT, payload: item });
     };
-    const myLoader = ({ src, width, quality }) => {
-        return src
-
-      }
     return (
         <Box className={classes.root}>
             <Typography variant="h2" align="center" gutterBottom className={classes.capital}>
                 {name}
             </Typography>
             <Divider />
-            <Grid container spacing={4} className={classes.root}>
+            <Grid container spacing={2}  className={classes.root} >
                 {state?.map((item: itemInterface) => (
                     <Grid item xs={12} sm={6} md={3}>
                         <Card className={classes.card} variant="outlined">
@@ -87,13 +83,11 @@ export default function Category({ state, name }) {
                                 }}
                             >
                                 <Image
-                                    // component="img"
-                                    // alt="Contemplative Reptile"
-                                    height="250%"
-                                    width="250%"
+                                    height='800%'
+                                    width='1200%'
                                     src={item.src}
                                     title={item.product}
-                                    loader={myLoader}
+                                    alt={item.product}
                                 />
                                 <CardContent>
                                     <Typography gutterBottom variant="h6">

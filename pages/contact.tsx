@@ -38,16 +38,15 @@ const useStyles = makeStyles((theme: Theme) =>
 function ContactUs() {
     const classes = useStyles();
     return (
-        <>
-            <Box p={11}>
-                <Container maxWidth="lg">
+        <Box>
+            <Container className={classes.card}>
                     <Paper className={classes.card}>
                         <Typography variant="h4" align="center" gutterBottom>
                             Visit Us
                         </Typography>
                         <Divider />
-                        <Grid container justify="space-evenly" className={classes.root}>
-                            <Grid item xs={3}>
+                        <Grid container justify="space-evenly" spacing={2} className={classes.root}>
+                            <Grid item xs={12} sm={6} md={3}>
                                 <Typography variant="h5" gutterBottom>
                                     Contact Details
                                 </Typography>
@@ -72,7 +71,7 @@ function ContactUs() {
                                     </Link>
                                 </Typography>
                             </Grid>
-                            <Grid item xs={3}>
+                            <Grid item xs={12} sm={6} md={3}>
                                 <Typography variant="h5" gutterBottom>
                                     Opening Hours
                                 </Typography>
@@ -81,7 +80,7 @@ function ContactUs() {
                                 <Typography>Friday</Typography>
                                 <Typography>05:00pm - 9:00pm</Typography>
                             </Grid>
-                            <Grid item xs={5}>
+                            <Grid item xs={12} md={6}>
                                 <Typography variant="h5" align="center">
                                     Email Us
                                 </Typography>
@@ -125,7 +124,6 @@ function ContactUs() {
                         </Grid>
                     </Paper>
                 </Container>
-            </Box>
             <Box>
                 <div className="mapouter">
                     <div className="gmap_canvas">
@@ -143,7 +141,7 @@ function ContactUs() {
                     </div>
                 </div>
             </Box>
-        </>
+        </Box>
     );
 }
 

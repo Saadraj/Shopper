@@ -9,7 +9,7 @@ import {
     makeStyles,
     Paper,
     TextField,
-    Toolbar
+    Toolbar,Theme
 } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import Link from "next/link";
@@ -17,10 +17,10 @@ import React, { useContext } from "react";
 import { StoreContext } from "../../pages/_app";
 import { subNav } from "./navItem";
 
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles((theme:Theme) =>
     createStyles({
         root: {
-            marginTop: 60,
+            marginTop: theme.spacing(9),
             zIndex: -1
         },
         grid: {
@@ -51,9 +51,9 @@ export default function SubNav() {
                 <Toolbar>
                     <Container maxWidth="xl">
                         <Grid container justify="space-between" alignItems="center">
-                            <Grid item container xs={4}>
+                            <Grid item style={{display:'flex'}}>
                                 {subNav.map((item) => (
-                                    <Grid item key={item.title} className={classes.grid}>
+                                    <div key={item.title} className={classes.grid}>
                                         <Link href={`/${item.apiName}`}>
                                             {item.title === "Carts" ? (
                                                 <Badge
@@ -78,17 +78,16 @@ export default function SubNav() {
                                                 </Button>
                                             )}
                                         </Link>
-                                    </Grid>
+                                    </div>
                                 ))}
                             </Grid>
-                            <Grid item xs={6} />
-                            <Grid item xs={2} container justify="flex-end">
+                            <Grid item>
                                 <TextField id="standard-basic" label="Search for Products" />
                                 <IconButton type="submit" aria-label="search">
                                     <SearchIcon />
                                 </IconButton>
                             </Grid>
-                        </Grid>
+                            </Grid>
                     </Container>
                 </Toolbar>
             </AppBar>

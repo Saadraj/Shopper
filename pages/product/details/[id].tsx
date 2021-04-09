@@ -50,7 +50,7 @@ const Details = () => {
         <Container maxWidth="lg" className={classes.root}>
                 <Box component={Paper} p={5} style={{height:'100%'}}>
                     <Grid container spacing={4}>
-                        <Grid item xs={6}>
+                        <Grid item xs={12} md={6}>
                             <ReactImageMagnify
                                 className={classes.top}
                                 {...{
@@ -67,7 +67,7 @@ const Details = () => {
                                 }}
                             />
                         </Grid>
-                        <Grid item container xs={6} >
+                        <Grid item container xs={12} md={6} >
                             <Grid item container xs={12} justify="space-between">
                                 <Grid item>
                                     <Typography variant="h4">{product}</Typography>
@@ -81,12 +81,12 @@ const Details = () => {
                                 )}
                             </Grid>
                             <Grid item container xs={12} justify="space-between">
-                                <Grid item xs={5}>
+                                <Grid item xs={5} md='auto'>
                                     <Typography variant="h6" color="primary">
                                         ${price}
                                     </Typography>
                                 </Grid>
-                                <Grid item xs={7} container justify="space-around">
+                                <Grid item xs={12} md='auto' container justify="space-around" spacing={2}>
                                     <Grid item>
                                         <Button
                                             color="primary"
@@ -113,7 +113,7 @@ const Details = () => {
                                     </Grid>
                                 </Grid>
                             </Grid>
-                            <Grid item xs={12}>
+                            <Grid item >
                                 <Typography
                                     variant="subtitle1"
                                     color="textSecondary"

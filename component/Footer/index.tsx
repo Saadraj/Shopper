@@ -40,7 +40,7 @@ const Footer = () => {
         <Box className={classes.root}>
             <Container maxWidth="md" className={classes.container}>
                 <Grid container justify="space-around" spacing={4}>
-                    <Grid item container justify="space-around" xs={3}>
+                    <Grid item container justify="space-around" xs={12} sm={3} md={3}>
                         <Grid item xs={12}>
                             <Link href="/">
                                 <a>
@@ -62,9 +62,9 @@ const Footer = () => {
                             </Grid>
                         ))}
                     </Grid>
-                    <Grid item container justify="space-around" xs={9}>
+                    <Grid item container justify="space-around" xs={9} spacing={5}>
                         {footer?.map((v) => (
-                            <Grid container item justify="space-around" xs={3} key={v.title}>
+                            <Grid container item justify="space-around" xs={12} sm={6} md={3} key={v.title}>
                                 <Grid item xs={12} className={classes.title}>
                                     <Typography variant="h5" paragraph>
                                         {v.title}

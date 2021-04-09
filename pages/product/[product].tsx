@@ -36,12 +36,12 @@ const Product = () => {
 
     return (
         <Grid container justify="space-around" component={Paper}>
-            <Grid item xs={2}>
+            <Grid item xs={12} md={2} >
                 <SideBar />
             </Grid>
             <Divider orientation="vertical" flexItem />
-            <Grid item container xs={9}>
-                <Grid item container xs={12} justify="center" spacing={4}>
+            <Grid item container xs={12} md={9} >
+                <Grid item container xs={12} justify="center" >
                     {state?.currentItems?.length ? (
                         <Category name={product} state={state.currentItems} />
                     ) : (

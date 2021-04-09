@@ -1,13 +1,15 @@
 import Box from "@material-ui/core/Box";
 import Divider from "@material-ui/core/Divider";
 import { GetStaticProps } from "next";
+import dynamic from "next/dynamic";
 import React from "react";
-import CustomerFeedback from "../component/Home/CustomerFeedback";
-import DisplayProduct from "../component/Home/DisplayProduct";
-import Feature from "../component/Home/Feature";
-import Latest from "../component/Home/Latest";
-import Partner from "../component/Home/Partners";
-import homeItems from '../component/Api/home.json'
+import homeItems from "../component/Api/home.json";
+const CustomerFeedback = dynamic(() => import("../component/Home/CustomerFeedback"));
+const DisplayProduct = dynamic(() => import("../component/Home/DisplayProduct"));
+const Feature = dynamic(() => import("../component/Home/Feature"));
+const Latest = dynamic(() => import("../component/Home/Latest"));
+const Partner = dynamic(() => import("../component/Home/Partners"));
+
 const index = ({ data }) => (
     <Box>
         <DisplayProduct items={data?.items} />
@@ -21,7 +23,7 @@ const index = ({ data }) => (
 );
 
 export const getStaticProps: GetStaticProps = async () => {
-    const data = homeItems
+    const data = homeItems;
     return {
         props: {
             data,

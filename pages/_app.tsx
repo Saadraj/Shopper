@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Head from "next/head";
 import React, { createContext, useReducer } from "react";

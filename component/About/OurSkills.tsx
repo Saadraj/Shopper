@@ -52,7 +52,7 @@ function OurSkills() {
             </Grid>
             <Grid item container xs={12} spacing={4} className={classes.skillsRoot}>
                 {skillsBar.map((v) => (
-                    <Grid item xs={6} key={v.name}>
+                    <Grid item xs={12} sm={6} key={v.name}>
                         <SkillsProgress
                             value={v.value}
                             color={v.color}

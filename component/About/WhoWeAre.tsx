@@ -6,10 +6,10 @@ function WhoWeAre() {
     return (
         <Paper>
             <Grid container>
-                <Grid item xs={6}>
-                    <Image src="/img/About/about-img.png" height={500} width={800} />
+                <Grid item xs={12} sm={6}  style={{display:'grid', placeItems:'center'}}>
+                    <Image src="/img/About/about-img.png" height="500%" width="800%" />
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={12} sm={6} >
                     <CardContent>
                         <Typography variant="h3" align="center" gutterBottom paragraph>
                             Who We Are

@@ -6,13 +6,13 @@ import {
     CardContent,
     Container,
     createStyles,
-    Divider,
+
     Grid,
     makeStyles,
     Slide,
     Snackbar,
     Theme,
-    Typography,
+    Typography
 } from "@material-ui/core";
 import RemoveCircleOutlineIcon from "@material-ui/icons/RemoveCircleOutline";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme: Theme) =>
             paddingTop: theme.spacing(11),
             paddingBottom: theme.spacing(11),
             width: "100%",
-            backgroundColor: "rgba(25, 118, 210,0.4)",
+            backgroundColor: 'rgba(25, 118, 210,0.4)',
         },
         green: {
             color: theme.palette.success.main,
@@ -48,25 +48,28 @@ const useStyles = makeStyles((theme: Theme) =>
             color: theme.palette.warning.main,
             width: 200,
         },
+        card:{
+            padding:theme.spacing(2),
+        }
     })
 );
 
 export default function Carts() {
     const classes = useStyles();
+    const { store, dispatch } = useContext(StoreContext);
     const route = useRouter();
     const [open, setOpen] = useState(false);
-    const { store, dispatch } = useContext(StoreContext);
-
+    
     const goToDetailsPage = (item: itemInterface) => {
         dispatch({ type: VIEW_DETAILS, payload: item });
         const url = Math.round(Math.random() * 10000);
         route.push(`/product/details/${url}`);
     };
-
+    
     const addToCart = (item: itemInterface) => {
         dispatch({ type: CART_DECREMENT, payload: item });
     };
-
+    
     const state = store.cart;
     return (
         <Box className={classes.root}>
@@ -74,14 +77,14 @@ export default function Carts() {
                 <Typography variant="h2" align="center" gutterBottom>
                     Carts
                 </Typography>
-                <Divider />
-                <Grid container spacing={2}>
+                    {state?.length?
+                <Grid container spacing={2} className={classes.root} style={{background:'transparent'}} >
                     {state?.map((item: itemInterface) => (
-                        <Grid item xs={12} key={item.src}>
-                            <Card>
+                        <Grid item xs={12} key={item.src} >
+                            <Card className={classes.card}>
                                 <Grid container>
-                                    <Grid item container xs={9}>
-                                        <Grid item xs={3}>
+                                    <Grid item container xs={12} md={9}>
+                                        <Grid item xs={12} md={3}>
                                             <Image
                                                 src={item.src}
                                                 alt={item.product}
@@ -89,7 +92,7 @@ export default function Carts() {
                                                 width="200%"
                                             />
                                         </Grid>
-                                        <Grid item xs={9}>
+                                        <Grid item xs={12} md={9}>
                                             <CardContent>
                                                 <Typography gutterBottom variant="h6">
                                                     {item.product}
@@ -137,7 +140,8 @@ export default function Carts() {
                                         alignContent="center"
                                         alignItems="center"
                                         spacing={1}
-                                        xs={3}
+                                        xs={12}
+                                        md={3}
                                     >
                                         <CardActions>
                                             <Grid container direction="column" spacing={1}>
@@ -186,8 +190,12 @@ export default function Carts() {
                                 </Grid>
                             </Card>
                         </Grid>
-                    ))}
+                        ))
+                        }
                 </Grid>
+                    :<Typography variant="h5" align='center' gutterBottom className={classes.root}>
+                    Carts is Empty...
+                </Typography>}
             </Container>
             <Snackbar
                 anchorOrigin={{ vertical: "top", horizontal: "right" }}

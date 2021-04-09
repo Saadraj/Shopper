@@ -78,12 +78,12 @@ const OurTeam = () => {
                 item
                 container
                 justify="space-around"
-                spacing={4}
+                spacing={2}
                 xs={12}
                 className={classes.skillsRoot}
             >
                 {teams.map((v) => (
-                    <Grid item xs={4} key={v.name}>
+                    <Grid item xs={12} sm={6} md={4} key={v.name}>
                         <Card variant="outlined">
                             <CardMedia
                                 component="img"
