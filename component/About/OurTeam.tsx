@@ -9,7 +9,7 @@ import {
     IconButton,
     makeStyles,
     Theme,
-    Typography
+    Typography,
 } from "@material-ui/core";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import InstagramIcon from "@material-ui/icons/Instagram";
@@ -21,40 +21,42 @@ const teams = [
     {
         name: "Jeffery Poole",
         title: "CEO",
-        src: "/img/About/team1.png"
+        src: "/img/About/team1.png",
     },
     {
         name: "Isabelle Dean",
         title: "Co-CEO",
-        src: "/img/About/team2.png"
+        src: "/img/About/team2.png",
     },
     {
         name: "Mike Kennedy",
         title: "Marketing Manager",
-        src: "/img/About/team3.png"
+        src: "/img/About/team3.png",
     },
     {
         name: "Edwin Gross",
         title: "Developer",
-        src: "/img/About/team4.png"
+        src: "/img/About/team4.png",
     },
     {
         name: "Mable Schwartz",
         title: "Developer",
-        src: "/img/About/team5.png"
+        src: "/img/About/team5.png",
     },
     {
         name: "Adele Washington",
         title: "UI/UX Designer",
-        src: "/img/About/team6.png"
-    }
+        src: "/img/About/team6.png",
+    },
 ];
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        skillsRoot: {
-            paddingTop: theme.spacing(5)
-        }
-    })
+const useStyles = makeStyles(
+    (theme: Theme) =>
+        createStyles({
+            skillsRoot: {
+                paddingTop: theme.spacing(5),
+            },
+        }),
+    { index: 3 }
 );
 
 const OurTeam = () => {

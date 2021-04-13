@@ -21,7 +21,7 @@ const Product = () => {
     }, [product]);
     
     useEffect(() => {
-        // setState(undefined);
+        setState(undefined);
         const has = menu.some((p) => p?.list?.length && p.apiName === product);
         const fetchData = async () => {
             const { data } = await axios.get(`/api/${product}?page=${page}`);
@@ -41,7 +41,7 @@ const Product = () => {
             </Grid>
             <Divider orientation="vertical" flexItem />
             <Grid item container xs={12} md={9} >
-                <Grid item container xs={12} justify="center" >
+                <Grid item container xs={12} justify="center">
                     {state?.currentItems?.length ? (
                         <Category name={product} state={state.currentItems} />
                     ) : (

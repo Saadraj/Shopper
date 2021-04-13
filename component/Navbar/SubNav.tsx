@@ -9,7 +9,8 @@ import {
     makeStyles,
     Paper,
     TextField,
-    Toolbar,Theme
+    Theme,
+    Toolbar,
 } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import Link from "next/link";
@@ -17,29 +18,31 @@ import React, { useContext } from "react";
 import { StoreContext } from "../../pages/_app";
 import { subNav } from "./navItem";
 
-const useStyles = makeStyles((theme:Theme) =>
-    createStyles({
-        root: {
-            marginTop: theme.spacing(9),
-            zIndex: -1
-        },
-        grid: {
-            border: "1px solid #333",
-            borderLeft: 0,
-            padding: "0px 10px",
-            "&:hover": {
-                transition: "0.6s",
-                color: "green"
+const useStyles = makeStyles(
+    (theme: Theme) =>
+        createStyles({
+            root: {
+                marginTop: theme.spacing(9),
+                zIndex: -1,
             },
-            "&:first-child": {
-                borderLeft: "1px solid #333"
-            }
-        },
-        form: {
-            padding: "0 12px",
-            backgroundColor: "rgba(0,0,0,0)"
-        }
-    })
+            grid: {
+                border: "1px solid #333",
+                borderLeft: 0,
+                padding: "0px 10px",
+                "&:hover": {
+                    transition: "0.6s",
+                    color: "green",
+                },
+                "&:first-child": {
+                    borderLeft: "1px solid #333",
+                },
+            },
+            form: {
+                padding: "0 12px",
+                backgroundColor: "rgba(0,0,0,0)",
+            },
+        }),
+    { index: 11 }
 );
 export default function SubNav() {
     const classes = useStyles();
@@ -51,7 +54,7 @@ export default function SubNav() {
                 <Toolbar>
                     <Container maxWidth="xl">
                         <Grid container justify="space-between" alignItems="center">
-                            <Grid item style={{display:'flex'}}>
+                            <Grid item style={{ display: "flex" }}>
                                 {subNav.map((item) => (
                                     <div key={item.title} className={classes.grid}>
                                         <Link href={`/${item.apiName}`}>
@@ -87,7 +90,7 @@ export default function SubNav() {
                                     <SearchIcon />
                                 </IconButton>
                             </Grid>
-                            </Grid>
+                        </Grid>
                     </Container>
                 </Toolbar>
             </AppBar>

@@ -9,52 +9,54 @@ import {
     makeStyles,
     Paper,
     Theme,
-    Typography
+    Typography,
 } from "@material-ui/core";
 import { loadCSS } from "fg-loadcss";
 import React from "react";
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        container: {
-            paddingTop: theme.spacing(11),
-            paddingBottom: theme.spacing(11)
-        },
-        paper: {
-            paddingTop: theme.spacing(5),
-            paddingBottom: theme.spacing(11),
-            textAlign: "center"
-        },
-        subHeadingPadding: {
-            paddingBottom: theme.spacing(5)
-        },
-        icon: {
-            fontSize: 50,
-            color: theme.palette.error.main,
-            "&:hover": {
-                color: "red",
-                animation: "$spin 1s 1"
-            }
-        },
-        featureContainer: {
-            textAlign: "left",
-            padding: theme.spacing(3)
-        },
-        cardContainer: {
-            width: 300
-        },
-        card: {
-            height: 250
-        },
-        "@keyframes spin": {
-            from: {
-                transform: "rotate(0deg)"
+const useStyles = makeStyles(
+    (theme: Theme) =>
+        createStyles({
+            container: {
+                paddingTop: theme.spacing(11),
+                paddingBottom: theme.spacing(11),
             },
-            to: {
-                transform: "rotate(360deg)"
-            }
-        }
-    })
+            paper: {
+                paddingTop: theme.spacing(5),
+                paddingBottom: theme.spacing(11),
+                textAlign: "center",
+            },
+            subHeadingPadding: {
+                paddingBottom: theme.spacing(5),
+            },
+            icon: {
+                fontSize: 50,
+                color: theme.palette.error.main,
+                "&:hover": {
+                    color: "red",
+                    animation: "$spin 1s 1",
+                },
+            },
+            featureContainer: {
+                textAlign: "left",
+                padding: theme.spacing(3),
+            },
+            cardContainer: {
+                width: 300,
+            },
+            card: {
+                height: 250,
+            },
+            "@keyframes spin": {
+                from: {
+                    transform: "rotate(0deg)",
+                },
+                to: {
+                    transform: "rotate(360deg)",
+                },
+            },
+        }),
+    { index: 7 }
 );
 export default function Feature({ features }) {
     const classes = useStyles();

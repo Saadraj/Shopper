@@ -4,8 +4,6 @@ import {
     CardActionArea,
     CardActions,
     CardContent,
-    CardMedia,
-    CircularProgress,
     createStyles,
     Divider,
     Grid,
@@ -28,30 +26,40 @@ import { StoreContext } from "../../pages/_app";
 import { CART_INCREMENT, VIEW_DETAILS } from "../../redux/actionTypes";
 import { itemInterface } from "./Interfaces";
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        root: {
-            paddingTop: theme.spacing(5),
-        },
-        capital: {
-            textTransform: "capitalize",
-        },
-        card: {
-            height: "100%",
-        },
-        button: {
-            fontSize: 6,
-        },
-        green: {
-            color: theme.palette.success.main,
-        },
-        red: {
-            color: theme.palette.error.main,
-        },
-        yellow: {
-            color: theme.palette.warning.main,
-        },
-    })
+const useStyles = makeStyles(
+    (theme: Theme) =>
+        createStyles({
+            root: {
+                paddingTop: theme.spacing(5),
+            minHeight:'222vh'
+
+            },
+            capital: {
+                textTransform: "capitalize",
+            },
+            card: {
+                height: "100%",
+            },
+            button: {
+                fontSize: 6,
+            },
+            green: {
+                color: theme.palette.success.main,
+            },
+            red: {
+                color: theme.palette.error.main,
+            },
+            yellow: {
+                color: theme.palette.warning.main,
+            },
+            loader:{
+                background: "url('/img/loader.gif')",
+                backgroundRepeat: "no-repeat",
+                backgroundAttachment: "cover",
+                backgroundSize: "100% 100%",
+            }
+        }),
+    { index: 12 }
 );
 
 export default function Category({ state, name }) {
@@ -73,7 +81,7 @@ export default function Category({ state, name }) {
                 {name}
             </Typography>
             <Divider />
-            <Grid container spacing={2}  className={classes.root} >
+            <Grid container spacing={2} className={classes.root}>
                 {state?.map((item: itemInterface) => (
                     <Grid item xs={12} sm={6} md={3}>
                         <Card className={classes.card} variant="outlined">
@@ -83,11 +91,12 @@ export default function Category({ state, name }) {
                                 }}
                             >
                                 <Image
-                                    height='800%'
-                                    width='1200%'
+                                    height="800%"
+                                    width="1200%"
                                     src={item.src}
                                     title={item.product}
                                     alt={item.product}
+                                    className={classes.loader}
                                 />
                                 <CardContent>
                                     <Typography gutterBottom variant="h6">

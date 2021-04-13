@@ -12,7 +12,7 @@ import {
     Snackbar,
     Theme,
     Tooltip,
-    Typography
+    Typography,
 } from "@material-ui/core";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
@@ -25,40 +25,42 @@ import { StoreContext } from "../../pages/_app";
 import { CART_INCREMENT, VIEW_DETAILS } from "../../redux/actionTypes/index";
 import { itemInterface } from "../utils/Interfaces";
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        container: {
-            paddingTop: theme.spacing(11),
-            paddingBottom: theme.spacing(11),
-        },
-        paper: {
-            paddingTop: theme.spacing(5),
-            paddingBottom: theme.spacing(5),
-        },
-        subHeadingPadding: {
-            paddingBottom: theme.spacing(5),
-        },
-        imageButton: {
-            position: "absolute",
-            display: "grid",
-            placeItems: "center",
-            height: "100%",
-            width: "100%",
-            transition: ".6s",
-            "&:hover": {
-                backgroundColor: "rgba(0,0,0,0.7)",
+const useStyles = makeStyles(
+    (theme: Theme) =>
+        createStyles({
+            container: {
+                paddingTop: theme.spacing(11),
+                paddingBottom: theme.spacing(11),
             },
-        },
-        green: {
-            color: theme.palette.success.main,
-        },
-        red: {
-            color: theme.palette.error.main,
-        },
-        yellow: {
-            color: theme.palette.warning.main,
-        },
-    })
+            paper: {
+                paddingTop: theme.spacing(5),
+                paddingBottom: theme.spacing(5),
+            },
+            subHeadingPadding: {
+                paddingBottom: theme.spacing(5),
+            },
+            imageButton: {
+                position: "absolute",
+                display: "grid",
+                placeItems: "center",
+                height: "100%",
+                width: "100%",
+                transition: ".6s",
+                "&:hover": {
+                    backgroundColor: "rgba(0,0,0,0.7)",
+                },
+            },
+            green: {
+                color: theme.palette.success.main,
+            },
+            red: {
+                color: theme.palette.error.main,
+            },
+            yellow: {
+                color: theme.palette.warning.main,
+            },
+        }),
+    { index: 8 }
 );
 
 export default function Latest({ latest }) {

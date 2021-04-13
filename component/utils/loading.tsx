@@ -2,12 +2,14 @@ import { Box, createStyles, Grid, makeStyles, Typography } from "@material-ui/co
 import CircularProgress from "@material-ui/core/CircularProgress";
 import React from "react";
 
-const useStyles = makeStyles(() =>
-    createStyles({
-        root: {
-            height: "100vh"
-        }
-    })
+const useStyles = makeStyles(
+    () =>
+        createStyles({
+            root: {
+                height: "100vh",
+            },
+        }),
+    { index: 13 }
 );
 
 export default function Loading() {

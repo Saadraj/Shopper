@@ -13,31 +13,33 @@ import Rating from "@material-ui/lab/Rating";
 import React from "react";
 import Carousel from "react-material-ui-carousel";
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        container: {
-            paddingTop: theme.spacing(11),
-            paddingBottom: theme.spacing(11),
-        },
-        paper: {
-            paddingTop: theme.spacing(5),
-            paddingBottom: theme.spacing(5),
-        },
-        subHeadingPadding: {
-            paddingBottom: theme.spacing(5),
-        },
-        card: {
-            padding: theme.spacing(5),
-            // textAlign: "left",
-        },
-        large: {
-            width: theme.spacing(22),
-            height: theme.spacing(22),
-        },
-        title: {
-            textTransform: "capitalize",
-        },
-    })
+const useStyles = makeStyles(
+    (theme: Theme) =>
+        createStyles({
+            container: {
+                paddingTop: theme.spacing(11),
+                paddingBottom: theme.spacing(11),
+            },
+            paper: {
+                paddingTop: theme.spacing(5),
+                paddingBottom: theme.spacing(5),
+            },
+            subHeadingPadding: {
+                paddingBottom: theme.spacing(5),
+            },
+            card: {
+                padding: theme.spacing(5),
+                // textAlign: "left",
+            },
+            large: {
+                width: theme.spacing(22),
+                height: theme.spacing(22),
+            },
+            title: {
+                textTransform: "capitalize",
+            },
+        }),
+    { index: 5 }
 );
 export default function CustomerFeedback({ feedbacks }) {
     const classes = useStyles();
@@ -45,11 +47,11 @@ export default function CustomerFeedback({ feedbacks }) {
         <Box>
             <Container maxWidth="lg" className={classes.container}>
                 <Paper className={classes.paper} elevation={0}>
-                    <Typography variant="h3" align='center' paragraph gutterBottom>
+                    <Typography variant="h3" align="center" paragraph gutterBottom>
                         Customer&apos;s Feedback
                     </Typography>
                     <Container maxWidth="sm" className={classes.subHeadingPadding}>
-                        <Typography paragraph component="p" align='center'>
+                        <Typography paragraph component="p" align="center">
                             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta optio
                             repellat quo veritatis perferendis eius aut ducimus porro nihil dolores
                             quia, placeat obcaecati. Reprehenderit pariatur deleniti atque, nisi

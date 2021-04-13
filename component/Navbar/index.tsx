@@ -23,47 +23,49 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { menu } from "./navItem";
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        root: {
-            zIndex: 1111,
-        },
-        tab: {
-            color: theme.palette.grey[50],
-            [theme.breakpoints.down("sm")]: {
-                display: "block",
-                width: "100%",
-                textAlign: "left",
+const useStyles = makeStyles(
+    (theme: Theme) =>
+        createStyles({
+            root: {
+                zIndex: 1111,
             },
-        },
-        outline: {
-            outline: 0,
-        },
-        collapse: {
-            [theme.breakpoints.up("sm")]: {
-                display: "none",
+            tab: {
+                color: theme.palette.grey[50],
+                [theme.breakpoints.down("sm")]: {
+                    display: "block",
+                    width: "100%",
+                    textAlign: "left",
+                },
             },
-            [theme.breakpoints.down("sm")]: {
-                display: "block",
+            outline: {
+                outline: 0,
             },
-        },
-        large:{
-            [theme.breakpoints.up("sm")]: {
-                display: "inline",
+            collapse: {
+                [theme.breakpoints.up("sm")]: {
+                    display: "none",
+                },
+                [theme.breakpoints.down("sm")]: {
+                    display: "block",
+                },
             },
-            [theme.breakpoints.down("sm")]: {
-                display: "none",
+            large: {
+                [theme.breakpoints.up("sm")]: {
+                    display: "inline",
+                },
+                [theme.breakpoints.down("sm")]: {
+                    display: "none",
+                },
             },
-        },
-        small:{
-            [theme.breakpoints.up("sm")]: {
-                display: "none",
+            small: {
+                [theme.breakpoints.up("sm")]: {
+                    display: "none",
+                },
+                [theme.breakpoints.down("sm")]: {
+                    display: "block",
+                },
             },
-            [theme.breakpoints.down("sm")]: {
-                display: "block",
-            },
-        }
-    })
+        }),
+    { index: 10 }
 );
 export default function Navbar() {
     const classes = useStyles();
@@ -100,7 +102,8 @@ export default function Navbar() {
                                     <MenuIcon />
                                 </IconButton>
                             </Grid>
-                            {<Grid item className={classes.large}>
+                            {
+                                <Grid item className={classes.large}>
                                     {menu.map((item) => (
                                         <Button
                                             key={item.apiName}
@@ -129,39 +132,42 @@ export default function Navbar() {
                                             anchorEl={anchorEl}
                                         />
                                     )}
-                            </Grid>}
-                            {<Grid item xs={10} className={classes.small}>
-                                <Collapse in={checked}>
-                                    {menu.map((item) => (
-                                        <Button
-                                            key={item.apiName}
-                                            className={classes.tab}
-                                            onClick={(e) => handleOpen(e, item)}
-                                            endIcon={
-                                                item?.list?.length > 0 ? (
-                                                    <ArrowDropDownIcon />
-                                                ) : null
-                                            }
-                                        >
-                                            {item?.list?.length > 0 ? (
-                                                <Typography>{item.title}</Typography>
-                                            ) : (
-                                                <Link href={`/${item.apiName}`}>
+                                </Grid>
+                            }
+                            {
+                                <Grid item xs={10} className={classes.small}>
+                                    <Collapse in={checked}>
+                                        {menu.map((item) => (
+                                            <Button
+                                                key={item.apiName}
+                                                className={classes.tab}
+                                                onClick={(e) => handleOpen(e, item)}
+                                                endIcon={
+                                                    item?.list?.length > 0 ? (
+                                                        <ArrowDropDownIcon />
+                                                    ) : null
+                                                }
+                                            >
+                                                {item?.list?.length > 0 ? (
                                                     <Typography>{item.title}</Typography>
-                                                </Link>
-                                            )}
-                                        </Button>
-                                    ))}
-                                    {list && (
-                                        <MenuLists
-                                            open={Boolean(anchorEl)}
-                                            menuList={list}
-                                            handleClose={handleClose}
-                                            anchorEl={anchorEl}
-                                        />
-                                    )}
-                                </Collapse>
-                            </Grid>}
+                                                ) : (
+                                                    <Link href={`/${item.apiName}`}>
+                                                        <Typography>{item.title}</Typography>
+                                                    </Link>
+                                                )}
+                                            </Button>
+                                        ))}
+                                        {list && (
+                                            <MenuLists
+                                                open={Boolean(anchorEl)}
+                                                menuList={list}
+                                                handleClose={handleClose}
+                                                anchorEl={anchorEl}
+                                            />
+                                        )}
+                                    </Collapse>
+                                </Grid>
+                            }
                         </Grid>
                     </Container>
                 </Toolbar>

@@ -5,14 +5,16 @@ import Zoom from "@material-ui/core/Zoom";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 import React from "react";
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        root: {
-            position: "fixed",
-            bottom: theme.spacing(2),
-            right: theme.spacing(2)
-        }
-    })
+const useStyles = makeStyles(
+    (theme: Theme) =>
+        createStyles({
+            root: {
+                position: "fixed",
+                bottom: theme.spacing(2),
+                right: theme.spacing(2),
+            },
+        }),
+    { index: 14 }
 );
 
 export default function ScrollTop() {
@@ -20,13 +22,13 @@ export default function ScrollTop() {
     const trigger = useScrollTrigger({
         target: undefined,
         disableHysteresis: true,
-        threshold: 100
+        threshold: 100,
     });
 
     const handleClick = () => {
         window.scrollTo({
             top: 0,
-            behavior: "smooth"
+            behavior: "smooth",
         });
     };
 

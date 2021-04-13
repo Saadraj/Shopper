@@ -13,28 +13,30 @@ import {
     Slider,
     TextField,
     Theme,
-    Typography
+    Typography,
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import SearchIcon from "@material-ui/icons/Search";
 import React, { useState } from "react";
 import { menu } from "../Navbar/navItem";
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        root: {
-            color: theme.palette.grey[50],
-            paddingTop: theme.spacing(11),
-            paddingBottom: theme.spacing(11)
-        },
-        cb: {
-            color: "black"
-        },
-        commonPadding: {
-            paddingTop: theme.spacing(5),
-            paddingBottom: theme.spacing(5)
-        }
-    })
+const useStyles = makeStyles(
+    (theme: Theme) =>
+        createStyles({
+            root: {
+                color: theme.palette.grey[50],
+                paddingTop: theme.spacing(11),
+                paddingBottom: theme.spacing(11),
+            },
+            cb: {
+                color: "black",
+            },
+            commonPadding: {
+                paddingTop: theme.spacing(5),
+                paddingBottom: theme.spacing(5),
+            },
+        }),
+    { index: 15 }
 );
 const SideBar = () => {
     const classes = useStyles();

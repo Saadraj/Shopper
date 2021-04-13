@@ -6,30 +6,32 @@ const skillsBar = [
     {
         name: "Shipping",
         value: 90,
-        color: "primary"
+        color: "primary",
     },
     {
         name: "Refund & Return",
         value: 80,
-        color: "secondary"
+        color: "secondary",
     },
     {
         name: "Customer Care",
         value: 95,
-        color: "secondary"
+        color: "secondary",
     },
     {
         name: "Customer Satisfiction",
         value: 90,
-        color: "primary"
-    }
+        color: "primary",
+    },
 ];
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        skillsRoot: {
-            paddingTop: theme.spacing(5)
-        }
-    })
+const useStyles = makeStyles(
+    (theme: Theme) =>
+        createStyles({
+            skillsRoot: {
+                paddingTop: theme.spacing(5),
+            },
+        }),
+    { index: 2 }
 );
 
 function OurSkills() {
@@ -53,11 +55,7 @@ function OurSkills() {
             <Grid item container xs={12} spacing={4} className={classes.skillsRoot}>
                 {skillsBar.map((v) => (
                     <Grid item xs={12} sm={6} key={v.name}>
-                        <SkillsProgress
-                            value={v.value}
-                            color={v.color}
-                            name={v.name}
-                        />
+                        <SkillsProgress value={v.value} color={v.color} name={v.name} />
                     </Grid>
                 ))}
             </Grid>

@@ -3,35 +3,36 @@ import React from "react";
 import Carousel from "react-material-ui-carousel";
 import { itemInterface } from "../utils/Interfaces";
 
-
-const useStyles = makeStyles(() =>
-    createStyles({
-        overlay: {
-            backgroundColor: "rgba(0,0,0,0.7)",
-            color: "#fefefe",
-            position: "absolute",
-            zIndex: 1,
-            display: "grid",
-            placeItems: "center",
-            height: "100%",
-            width: "100%",
-        },
-        container: {
-            position: "relative",
-            textAlign: "center",
-            height: "90vh",
-            width: "100%"
-        },
-        text: {
-            display: "grid",
-            placeItems: "center",
-            height: "20%",
-            width: "100%",
-        },
-        background: {
-            backgroundColor: "rgba(255,255,255,0.3)"
-        }
-    })
+const useStyles = makeStyles(
+    () =>
+        createStyles({
+            overlay: {
+                backgroundColor: "rgba(0,0,0,0.7)",
+                color: "#fefefe",
+                position: "absolute",
+                zIndex: 1,
+                display: "grid",
+                placeItems: "center",
+                height: "100%",
+                width: "100%",
+            },
+            container: {
+                position: "relative",
+                textAlign: "center",
+                height: "90vh",
+                width: "100%",
+            },
+            text: {
+                display: "grid",
+                placeItems: "center",
+                height: "20%",
+                width: "100%",
+            },
+            background: {
+                backgroundColor: "rgba(255,255,255,0.3)",
+            },
+        }),
+    { index: 6 }
 );
 export default function DisplayProduct({ items }) {
     const classes = useStyles();
