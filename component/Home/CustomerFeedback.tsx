@@ -47,15 +47,25 @@ export default function CustomerFeedback({ feedbacks }) {
         <Box>
             <Container maxWidth="lg" className={classes.container}>
                 <Paper className={classes.paper} elevation={0}>
-                    <Typography variant="h3" align="center" paragraph gutterBottom>
+                    <Typography
+                        variant="h3"
+                        align="center"
+                        paragraph
+                        gutterBottom
+                    >
                         Customer&apos;s Feedback
                     </Typography>
-                    <Container maxWidth="sm" className={classes.subHeadingPadding}>
+                    <Container
+                        maxWidth="sm"
+                        className={classes.subHeadingPadding}
+                    >
                         <Typography paragraph component="p" align="center">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta optio
-                            repellat quo veritatis perferendis eius aut ducimus porro nihil dolores
-                            quia, placeat obcaecati. Reprehenderit pariatur deleniti atque, nisi
-                            quae rerum similique itaque qui.
+                            Lorem, ipsum dolor sit amet consectetur adipisicing
+                            elit. Soluta optio repellat quo veritatis
+                            perferendis eius aut ducimus porro nihil dolores
+                            quia, placeat obcaecati. Reprehenderit pariatur
+                            deleniti atque, nisi quae rerum similique itaque
+                            qui.
                         </Typography>
                     </Container>
                     <Container maxWidth="lg">
@@ -93,7 +103,10 @@ export default function CustomerFeedback({ feedbacks }) {
                                                 >
                                                     {feedback.name}
                                                 </Typography>
-                                                <Rating value={feedback.rating} readOnly />
+                                                <Rating
+                                                    value={feedback.rating}
+                                                    readOnly
+                                                />
                                                 <Typography paragraph>
                                                     {feedback.comment}
                                                 </Typography>

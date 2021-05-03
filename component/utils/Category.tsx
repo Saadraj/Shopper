@@ -53,7 +53,6 @@ const useStyles = makeStyles(
                 color: theme.palette.warning.main,
             },
             loader:{
-                background: "url('/img/loader.gif')",
                 backgroundRepeat: "no-repeat",
                 backgroundAttachment: "cover",
                 backgroundSize: "100% 100%",

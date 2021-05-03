@@ -77,34 +77,53 @@ export default function Feature({ features }) {
                     <Typography variant="h3" paragraph>
                         Features
                     </Typography>
-                    <Container maxWidth="sm" className={classes.subHeadingPadding}>
+                    <Container
+                        maxWidth="sm"
+                        className={classes.subHeadingPadding}
+                    >
                         <Typography paragraph component="p">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta optio
-                            repellat quo veritatis perferendis eius aut ducimus porro nihil dolores
-                            quia, placeat obcaecati. Reprehenderit pariatur deleniti atque, nisi
-                            quae rerum similique itaque qui.
+                            Lorem, ipsum dolor sit amet consectetur adipisicing
+                            elit. Soluta optio repellat quo veritatis
+                            perferendis eius aut ducimus porro nihil dolores
+                            quia, placeat obcaecati. Reprehenderit pariatur
+                            deleniti atque, nisi quae rerum similique itaque
+                            qui.
                         </Typography>
                     </Container>
                     <Container maxWidth="lg">
                         <Grid container justify="space-around" spacing={5}>
                             {features?.map(
-                                (feature: { icon: string; title: string; description: string }) => (
+                                (feature: {
+                                    icon: string;
+                                    title: string;
+                                    description: string;
+                                }) => (
                                     <Grid
                                         item
                                         className={classes.cardContainer}
                                         key={feature.title}
                                     >
-                                        <Card variant="outlined" className={classes.card}>
-                                            <CardContent className={classes.featureContainer}>
-                                                <Typography color="textSecondary" paragraph>
+                                        <Card
+                                            variant="outlined"
+                                            className={classes.card}
+                                        >
+                                            <CardContent
+                                                className={
+                                                    classes.featureContainer
+                                                }
+                                            >
+                                                <Box pb={2}>
                                                     <Icon
                                                         className={`${feature.icon} ${classes.icon}`}
                                                     />
-                                                </Typography>
+                                                </Box>
                                                 <Typography variant="h4">
                                                     {feature.title}
                                                 </Typography>
-                                                <Typography variant="body2" component="p">
+                                                <Typography
+                                                    variant="body2"
+                                                    component="p"
+                                                >
                                                     {feature.description}
                                                 </Typography>
                                             </CardContent>

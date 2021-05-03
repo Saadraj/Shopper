@@ -97,12 +97,17 @@ export default function Latest({ latest }) {
                     <Typography variant="h3" align="center" gutterBottom>
                         Latest Products
                     </Typography>
-                    <Container maxWidth="sm" className={classes.subHeadingPadding}>
+                    <Container
+                        maxWidth="sm"
+                        className={classes.subHeadingPadding}
+                    >
                         <Typography paragraph component="p">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta optio
-                            repellat quo veritatis perferendis eius aut ducimus porro nihil dolores
-                            quia, placeat obcaecati. Reprehenderit pariatur deleniti atque, nisi
-                            quae rerum similique itaque qui.
+                            Lorem, ipsum dolor sit amet consectetur adipisicing
+                            elit. Soluta optio repellat quo veritatis
+                            perferendis eius aut ducimus porro nihil dolores
+                            quia, placeat obcaecati. Reprehenderit pariatur
+                            deleniti atque, nisi quae rerum similique itaque
+                            qui.
                         </Typography>
                     </Container>
                     <Container maxWidth="md">
@@ -111,53 +116,80 @@ export default function Latest({ latest }) {
                                 <Grid item key={item.src}>
                                     <Paper
                                         variant="outlined"
-                                        onMouseOver={() => onMouseOverEvent(item.product)}
+                                        onMouseOver={() =>
+                                            onMouseOverEvent(item.product)
+                                        }
                                         onMouseLeave={() => onMouseLeaveEvent()}
                                     >
-                                        <ButtonBase focusRipple key={item.product}>
+                                        <ButtonBase
+                                            focusRipple
+                                            key={item.product}
+                                        >
                                             <Image
                                                 src={item.src}
                                                 title={item.product}
                                                 height={200}
                                                 width={200}
                                             />
-                                            <span className={classes.imageButton}>
-                                                <Grow in={item.product === target && open}>
-                                                    <Grid container justify="space-evenly">
+                                            <span
+                                                className={classes.imageButton}
+                                            >
+                                                <Grow
+                                                    in={
+                                                        item.product ===
+                                                            target && open
+                                                    }
+                                                >
+                                                    <Grid
+                                                        container
+                                                        justify="space-evenly"
+                                                    >
                                                         <Grid item>
                                                             <Tooltip title="Order Now">
-                                                                <IconButton
-                                                                    className={classes.red}
+                                                                <Box
+                                                                    className={
+                                                                        classes.red
+                                                                    }
                                                                     onClick={() => {
-                                                                        setOpenSnackbar(true);
+                                                                        setOpenSnackbar(
+                                                                            true
+                                                                        );
                                                                     }}
                                                                 >
                                                                     <ShoppingCartIcon />
-                                                                </IconButton>
+                                                                </Box>
                                                             </Tooltip>
                                                         </Grid>
                                                         <Grid item>
                                                             <Tooltip title="View Details">
-                                                                <IconButton
-                                                                    className={classes.yellow}
+                                                                <Box
+                                                                    className={
+                                                                        classes.yellow
+                                                                    }
                                                                     onClick={() => {
-                                                                        goToDetailsPage(item);
+                                                                        goToDetailsPage(
+                                                                            item
+                                                                        );
                                                                     }}
                                                                 >
                                                                     <VisibilityIcon />
-                                                                </IconButton>
+                                                                </Box>
                                                             </Tooltip>
                                                         </Grid>
                                                         <Grid item>
                                                             <Tooltip title="Add to Cart">
-                                                                <IconButton
-                                                                    className={classes.green}
+                                                                <Box
+                                                                    className={
+                                                                        classes.green
+                                                                    }
                                                                     onClick={() => {
-                                                                        addToCart(item);
+                                                                        addToCart(
+                                                                            item
+                                                                        );
                                                                     }}
                                                                 >
                                                                     <AddCircleOutlineIcon />
-                                                                </IconButton>
+                                                                </Box>
                                                             </Tooltip>
                                                         </Grid>
                                                     </Grid>
