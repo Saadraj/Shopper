@@ -28,6 +28,7 @@ const useStyles = makeStyles(
         createStyles({
             root: {
                 zIndex: 1111,
+                width:'100%'
             },
             tab: {
                 color: theme.palette.grey[50],
@@ -141,7 +142,6 @@ export default function Navbar() {
                                             <Button
                                                 key={item.apiName}
                                                 className={classes.tab}
-                                                onClick={closeNav}
                                             >
                                                 <Link href={`/${item.apiName}`}>
                                                     <Typography>
@@ -182,7 +182,7 @@ export default function Navbar() {
                                                 <Button
                                                     key={item.apiName}
                                                     className={classes.tab}
-                                                    onClick={closeNav}
+                                                    onClick={handleClose}
                                                 >
                                                     <Link href={`/${item.apiName}`}>
                                                         <Typography>
