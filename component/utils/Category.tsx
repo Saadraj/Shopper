@@ -13,7 +13,7 @@ import {
     Snackbar,
     Theme,
     Tooltip,
-    Typography,
+    Typography
 } from "@material-ui/core";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
@@ -31,7 +31,7 @@ const useStyles = makeStyles(
         createStyles({
             root: {
                 paddingTop: theme.spacing(5),
-            minHeight:'222vh'
+            minHeight:'100vh'
 
             },
             capital: {
@@ -82,7 +82,7 @@ export default function Category({ state, name }) {
             <Divider />
             <Grid container spacing={2} className={classes.root}>
                 {state?.map((item: itemInterface) => (
-                    <Grid item xs={12} sm={6} md={3}>
+                    <Grid item xs={12} sm={6} md={3} key= {item.product}>
                         <Card className={classes.card} variant="outlined">
                             <CardActionArea
                                 onClick={() => {
@@ -90,8 +90,8 @@ export default function Category({ state, name }) {
                                 }}
                             >
                                 <Image
-                                    height="800%"
-                                    width="1200%"
+                                    height="200%"
+                                    width="300%"
                                     src={item.src}
                                     title={item.product}
                                     alt={item.product}

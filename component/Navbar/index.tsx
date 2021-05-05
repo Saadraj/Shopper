@@ -41,6 +41,7 @@ const useStyles = makeStyles(
                 outline: 0,
             },
             collapse: {
+                color: "#f7f7f7",
                 [theme.breakpoints.up("sm")]: {
                     display: "none",
                 },
@@ -79,6 +80,7 @@ export default function Navbar() {
     };
     const handleClose = () => {
         setAnchorEl(null);
+        setChecked(false);
     };
 
     return (
@@ -86,11 +88,28 @@ export default function Navbar() {
             <AppBar position="fixed" color="primary" component={Paper}>
                 <Toolbar>
                     <Container maxWidth="xl">
-                        <Grid container justify="space-between" alignItems="center">
-                            <Grid item xs={12} md={1} container justify="space-between">
+                        <Grid
+                            container
+                            justify="space-between"
+                            alignItems="center"
+                            alignContent="center"
+                        >
+                            <Grid
+                                item
+                                xs={12}
+                                md={1}
+                                container
+                                justify="space-between"
+                                alignItems="center"
+                                alignContent="center"
+                            >
                                 <Link href="/">
                                     <a>
-                                        <Image src="/img/logo.png" width="100%" height="20px" />
+                                        <Image
+                                            src="/img/logo.png"
+                                            width="100%"
+                                            height="20px"
+                                        />
                                     </a>
                                 </Link>
                                 <IconButton
@@ -104,26 +123,34 @@ export default function Navbar() {
                             </Grid>
                             {
                                 <Grid item className={classes.large}>
-                                    {menu.map((item) => (
-                                        <Button
-                                            key={item.apiName}
-                                            className={classes.tab}
-                                            onClick={(e) => handleOpen(e, item)}
-                                            endIcon={
-                                                item?.list?.length > 0 ? (
-                                                    <ArrowDropDownIcon />
-                                                ) : null
-                                            }
-                                        >
-                                            {item?.list?.length > 0 ? (
-                                                <Typography>{item.title}</Typography>
-                                            ) : (
+                                    {menu.map((item) =>
+                                        item?.list?.length ? (
+                                            <Button
+                                                key={item.apiName}
+                                                className={classes.tab}
+                                                onClick={(e) =>
+                                                    handleOpen(e, item)
+                                                }
+                                                endIcon={<ArrowDropDownIcon />}
+                                            >
+                                                <Typography>
+                                                    {item.title}
+                                                </Typography>
+                                            </Button>
+                                        ) : (
+                                            <Button
+                                                key={item.apiName}
+                                                className={classes.tab}
+                                                onClick={closeNav}
+                                            >
                                                 <Link href={`/${item.apiName}`}>
-                                                    <Typography>{item.title}</Typography>
+                                                    <Typography>
+                                                        {item.title}
+                                                    </Typography>
                                                 </Link>
-                                            )}
-                                        </Button>
-                                    ))}
+                                            </Button>
+                                        )
+                                    )}
                                     {list && (
                                         <MenuLists
                                             open={Boolean(anchorEl)}
@@ -138,24 +165,32 @@ export default function Navbar() {
                                 <Grid item xs={10} className={classes.small}>
                                     <Collapse in={checked}>
                                         {menu.map((item) => (
-                                            <Button
-                                                key={item.apiName}
-                                                className={classes.tab}
-                                                onClick={(e) => handleOpen(e, item)}
-                                                endIcon={
-                                                    item?.list?.length > 0 ? (
-                                                        <ArrowDropDownIcon />
-                                                    ) : null
-                                                }
-                                            >
-                                                {item?.list?.length > 0 ? (
-                                                    <Typography>{item.title}</Typography>
-                                                ) : (
+                                            item?.list?.length ? (
+                                                <Button
+                                                    key={item.apiName}
+                                                    className={classes.tab}
+                                                    onClick={(e) =>
+                                                        handleOpen(e, item)
+                                                    }
+                                                    endIcon={<ArrowDropDownIcon />}
+                                                >
+                                                    <Typography>
+                                                        {item.title}
+                                                    </Typography>
+                                                </Button>
+                                            ) : (
+                                                <Button
+                                                    key={item.apiName}
+                                                    className={classes.tab}
+                                                    onClick={closeNav}
+                                                >
                                                     <Link href={`/${item.apiName}`}>
-                                                        <Typography>{item.title}</Typography>
+                                                        <Typography>
+                                                            {item.title}
+                                                        </Typography>
                                                     </Link>
-                                                )}
-                                            </Button>
+                                                </Button>
+                                            )
                                         ))}
                                         {list && (
                                             <MenuLists

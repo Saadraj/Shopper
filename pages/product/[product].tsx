@@ -1,7 +1,6 @@
 import { Box, Divider, Grid, Paper } from "@material-ui/core";
 import { Pagination } from "@material-ui/lab";
 import axios from "axios";
-import { GetStaticPaths } from "next";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { menu } from "../../component/Navbar/navItem";
@@ -19,7 +18,7 @@ const Product = () => {
     useEffect(() => {
         setPage(1);
     }, [product]);
-    
+
     useEffect(() => {
         setState(undefined);
         const has = menu.some((p) => p?.list?.length && p.apiName === product);
@@ -36,11 +35,11 @@ const Product = () => {
 
     return (
         <Grid container justify="space-around" component={Paper}>
-            <Grid item xs={12} md={2} >
+            <Grid item xs={12} md={2}>
                 <SideBar />
             </Grid>
             <Divider orientation="vertical" flexItem />
-            <Grid item container xs={12} md={9} >
+            <Grid item container xs={12} md={9}>
                 <Grid item container xs={12} justify="center">
                     {state?.currentItems?.length ? (
                         <Category name={product} state={state.currentItems} />

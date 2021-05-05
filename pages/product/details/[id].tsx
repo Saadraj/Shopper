@@ -35,6 +35,12 @@ const useStyles = makeStyles(
             top: {
                 zIndex: 111,
             },
+            discount: {
+                transform: "rotateZ(-10deg)",
+                backgroundColor: "purple",
+                color: "#f7f7f7",
+                padding: "0px .5rem",
+            },
         }),
     { index: 16 }
 );
@@ -76,14 +82,17 @@ const Details = () => {
                             </Grid>
                             {discount && (
                                 <Grid item>
-                                    <Typography variant="h6" color="error" style={{transform:'rotateZ(-10deg)',backgroundColor:'purple'}}>
+                                    <Typography
+                                        variant="h6"
+                                        className={classes.discount}
+                                    >
                                         {discount}% OFF
                                     </Typography>
                                 </Grid>
                             )}
                         </Grid>
                         <Grid item container xs={12} justify="space-between">
-                            <Grid item xs={5} >
+                            <Grid item xs={5}>
                                 <Typography variant="h6" color="primary">
                                     ${price}
                                 </Typography>
@@ -123,18 +132,27 @@ const Details = () => {
                             </Grid>
                         </Grid>
                         <Grid item>
-                            <Typography variant="subtitle1" color="textSecondary" align="justify">
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid
-                                non similique laborum iure reprehenderit, asperiores voluptas quae
-                                cumque animi, autem minus, doloremque quis ipsam aliquam cum dolores
-                                accusamus incidunt. Eveniet laudantium incidunt corrupti, illo
-                                molestiae doloremque asperiores ducimus. Reprehenderit similique
-                                quibusdam dolor itaque enim. Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Dolores fuga eos voluptate impedit autem ipsum
-                                soluta doloremque blanditiis voluptatum molestiae id ex rerum
-                                repudiandae exercitationem nobis nesciunt, nisi corrupti asperiores
-                                sint nam. Fugiat molestias, quibusdam excepturi nihil aspernatur
-                                nobis dignissimos omnis eos iste dolore?
+                            <Typography
+                                variant="subtitle1"
+                                color="textSecondary"
+                                align="justify"
+                            >
+                                Lorem ipsum dolor sit, amet consectetur
+                                adipisicing elit. Aliquid non similique laborum
+                                iure reprehenderit, asperiores voluptas quae
+                                cumque animi, autem minus, doloremque quis ipsam
+                                aliquam cum dolores accusamus incidunt. Eveniet
+                                laudantium incidunt corrupti, illo molestiae
+                                doloremque asperiores ducimus. Reprehenderit
+                                similique quibusdam dolor itaque enim. Lorem
+                                ipsum dolor sit amet consectetur adipisicing
+                                elit. Dolores fuga eos voluptate impedit autem
+                                ipsum soluta doloremque blanditiis voluptatum
+                                molestiae id ex rerum repudiandae exercitationem
+                                nobis nesciunt, nisi corrupti asperiores sint
+                                nam. Fugiat molestias, quibusdam excepturi nihil
+                                aspernatur nobis dignissimos omnis eos iste
+                                dolore?
                             </Typography>
                         </Grid>
                     </Grid>

@@ -10,6 +10,7 @@ import {
     Paper,
     TextField,
     Theme,
+    Typography,
     Toolbar,
 } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
@@ -28,7 +29,16 @@ const useStyles = makeStyles(
             grid: {
                 border: "1px solid #333",
                 borderLeft: 0,
-                padding: "0px 10px",
+                cursor:'pointer',
+                textTransform:'uppercase',
+                [theme.breakpoints.up("sm")]: {
+                    fontSize: "1rem",
+                    padding: "10px",
+                },
+                [theme.breakpoints.down("sm")]: {
+                    fontSize: ".5rem",
+                    padding: "5px",
+                },
                 "&:hover": {
                     transition: "0.6s",
                     color: "green",
@@ -41,6 +51,7 @@ const useStyles = makeStyles(
                 padding: "0 12px",
                 backgroundColor: "rgba(0,0,0,0)",
             },
+            
         }),
     { index: 11 }
 );
@@ -63,22 +74,18 @@ export default function SubNav() {
                                                     badgeContent={totalCart || null}
                                                     color="primary"
                                                 >
-                                                    <Button
-                                                        color="inherit"
-                                                        variant="text"
-                                                        disableRipple
+                                                    <Typography
+                                                    component='span'
                                                     >
                                                         {item.title}
-                                                    </Button>
+                                                    </Typography>
                                                 </Badge>
                                             ) : (
-                                                <Button
-                                                    color="inherit"
-                                                    variant="text"
-                                                    disableRipple
+                                                <Typography
+                                                component='span'
                                                 >
                                                     {item.title}
-                                                </Button>
+                                                </Typography>
                                             )}
                                         </Link>
                                     </div>
